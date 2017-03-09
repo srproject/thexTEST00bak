@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -48,6 +49,8 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback {
         surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_NORMAL);
 
 
+
+
         camView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +66,8 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback {
 
                 Camera.Parameters parameters2 = camera.getParameters();
                 parameters2.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+                camera.setDisplayOrientation(270);
+
                 camera.setParameters(parameters2);
 
 
@@ -199,11 +204,65 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback {
 
     @Override
     public void onResume() {
-        super.onResume();
+
+         super.onResume();
+
+
+
 
 
 
     }
 
+    @Override
+    public void onPause() {
 
+
+        super.onPause();
+
+
+
+    }
+
+    @Override
+    public void onDestroy() {
+
+
+        super.onDestroy();
+
+
+    }
+
+    public void closeCamera() {
+        Log.w("SR", "OnPause()");
+
+        if (null != camera) {
+            camera.stopPreview();
+            camera.release();
+            camera = null;
+        }
+     }
+    public void openCamera() {
+        // camera.startPreview();  // starting camera preview
+        Log.i("camera","off");
+
+        camera = Camera.open();
+
+        Camera.Parameters parameters = camera.getParameters();
+        //parameters.setColorEffect(Camera.Parameters.EFFECT_SEPIA); //applying effect on cameracamera.setParameters(parameters); // setting camera parameters
+        try {
+            camera.setPreviewDisplay(surfaceHolder); // setting preview of camera
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Camera.Parameters parameters2 = camera.getParameters();
+        parameters2.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+        camera.setDisplayOrientation(270);
+
+        camera.setParameters(parameters2);
+
+
+        camera.startPreview();
+    }
 }

@@ -1,4 +1,4 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,12 +6,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/lohome"
         android:gravity="center_horizontal"
         android:orientation="vertical">
+
+
+
+
+
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -26,6 +32,7 @@
         android:layout_marginBottom="20dp"
 
         >
+
 
 
         <ImageView
@@ -438,4 +445,4 @@
     </LinearLayout>
 
 
-</ScrollView>
+</android.support.v4.widget.NestedScrollView >

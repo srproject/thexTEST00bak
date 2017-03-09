@@ -63,18 +63,27 @@ public class MainActivity extends AppCompatActivity {
                         switch (item.getItemId()) {
                             case R.id.navigation_home:
                                 viewPager.setCurrentItem(0);
+                                cameraFragment.closeCamera();
+
                                 return true;
                             case R.id.navigation_time:
                                 viewPager.setCurrentItem(1);
+                                cameraFragment.closeCamera();
+
                                 return true;
                             case R.id.navigation_noti:
                                 viewPager.setCurrentItem(2);
+                                cameraFragment.closeCamera();
+
                                 return true;
                             case R.id.navigation_pro:
                                 viewPager.setCurrentItem(3);
+                                cameraFragment.closeCamera();
+
                                 return true;
                             case R.id.navigation_camera:
                                 viewPager.setCurrentItem(4);
+                                cameraFragment.openCamera();
                                 return true;
 
                         }

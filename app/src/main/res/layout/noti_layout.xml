@@ -1,4 +1,4 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/login_form"
@@ -14,17 +14,16 @@
         android:orientation="vertical"
         >
 
-
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:cardElevation="3dp"
+            app:cardElevation="1dp"
             app:cardUseCompatPadding="false"
             app:cardPreventCornerOverlap="true"
-            app:cardCornerRadius="20dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="20dp"
+            android:layout_marginTop="30dp"
 
 
             >
@@ -37,7 +36,6 @@
                 android:layout_height="80dp"
                 app:srcCompat="@mipmap/hero"
                 android:id="@+id/imageNoti"
-                app:cardCornerRadius="50dp"
                 android:layout_marginBottom="30dp"
 
                 />
@@ -153,24 +151,20 @@
 
 
 
-        <!-- TWO -->
-        <!-- TWO -->
-        <!-- TWO -->
-        <!-- TWO -->
-        <!-- TWO -->
-        <!-- TWO -->
-
+        <!-- OTHER -->
+        <!-- OTHER -->
+        <!-- OTHER -->
+        <!-- OTHER -->
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:cardElevation="3dp"
+            app:cardElevation="1dp"
             app:cardUseCompatPadding="false"
             app:cardPreventCornerOverlap="true"
-            app:cardCornerRadius="20dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
 
 
             >
@@ -182,8 +176,7 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 app:srcCompat="@mipmap/hero"
-                android:id="@+id/imageNoti2"
-                app:cardCornerRadius="50dp"
+                android:id="@+id/imageNoti"
                 android:layout_marginBottom="30dp"
 
                 />
@@ -298,16 +291,20 @@
         </android.support.v7.widget.CardView>
 
 
+
+        <!-- OTHER -->
+        <!-- OTHER -->
+        <!-- OTHER -->
+        <!-- OTHER -->
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:cardElevation="3dp"
+            app:cardElevation="1dp"
             app:cardUseCompatPadding="false"
             app:cardPreventCornerOverlap="true"
-            app:cardCornerRadius="20dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
 
 
             >
@@ -319,8 +316,7 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 app:srcCompat="@mipmap/hero"
-                android:id="@+id/imageNoti3"
-                app:cardCornerRadius="50dp"
+                android:id="@+id/imageNoti"
                 android:layout_marginBottom="30dp"
 
                 />
@@ -435,16 +431,20 @@
         </android.support.v7.widget.CardView>
 
 
+
+        <!-- OTHER -->
+        <!-- OTHER -->
+        <!-- OTHER -->
+        <!-- OTHER -->
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:cardElevation="3dp"
+            app:cardElevation="1dp"
             app:cardUseCompatPadding="false"
             app:cardPreventCornerOverlap="true"
-            app:cardCornerRadius="20dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
 
 
             >
@@ -456,8 +456,7 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 app:srcCompat="@mipmap/hero"
-                android:id="@+id/imageNoti4"
-                app:cardCornerRadius="50dp"
+                android:id="@+id/imageNoti"
                 android:layout_marginBottom="30dp"
 
                 />
@@ -572,279 +571,14 @@
         </android.support.v7.widget.CardView>
 
 
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:cardElevation="3dp"
-            app:cardUseCompatPadding="false"
-            app:cardPreventCornerOverlap="true"
-            app:cardCornerRadius="20dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="20dp"
+
+        <!-- OTHER -->
+        <!-- OTHER -->
+        <!-- OTHER -->
+        <!-- OTHER -->
 
 
-            >
-
-
-            <ImageView
-                android:layout_marginTop="0dp"
-                android:layout_marginLeft="10dp"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                app:srcCompat="@mipmap/hero"
-                android:id="@+id/imageNoti5"
-                app:cardCornerRadius="50dp"
-                android:layout_marginBottom="30dp"
-
-                />
-
-            <TextView
-                android:id="@+id/titlenoti"
-                android:text="Title"
-                android:layout_marginLeft="110dp"
-                android:layout_marginTop="30dp"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/imageView1"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:textSize="20dp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/des1"
-                android:text="description"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="80dp"
-                android:layout_marginBottom="0dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/title1"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-
-            <Button
-                android:id ="@+id/btn1"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:background="@mipmap/ic_chat_black_48dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="110dp"
-                android:layout_marginBottom="20dp"
-                android:layout_below="@+id/des1"
-                >
-
-            </Button>
-
-            <TextView
-                android:id="@+id/comn"
-                android:text="100"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="140dp"
-                android:layout_marginBottom="0dp"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/btn1"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <Button
-                android:id ="@+id/btn2"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:background="@mipmap/love"
-                android:layout_marginLeft="175dp"
-                android:layout_marginTop="110dp"
-                android:layout_marginBottom="20dp"
-                android:layout_below="@+id/des1"
-                >
-
-            </Button>
-
-            <TextView
-                android:id="@+id/loven"
-                android:text="345"
-                android:layout_marginLeft="175dp"
-                android:layout_marginTop="140dp"
-                android:layout_marginBottom="0dp"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/btn2"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-
-            <Button
-                android:id ="@+id/btn3"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:background="@mipmap/share"
-                android:layout_marginLeft="280dp"
-                android:layout_marginTop="110dp"
-                android:layout_marginBottom="20dp"
-                android:layout_below="@+id/des1"
-                >
-
-            </Button>
-
-            <TextView
-                android:id="@+id/sharen"
-                android:text="345"
-                android:layout_marginLeft="280dp"
-                android:layout_marginTop="140dp"
-                android:layout_marginBottom="0dp"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/btn2"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-
-        </android.support.v7.widget.CardView>
-
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:cardElevation="3dp"
-            app:cardUseCompatPadding="false"
-            app:cardPreventCornerOverlap="true"
-            app:cardCornerRadius="20dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="70dp"
-
-
-            >
-
-
-            <ImageView
-                android:layout_marginTop="0dp"
-                android:layout_marginLeft="10dp"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                app:srcCompat="@mipmap/hero"
-                android:id="@+id/imageNoti6"
-                app:cardCornerRadius="50dp"
-                android:layout_marginBottom="30dp"
-
-                />
-
-            <TextView
-                android:id="@+id/titlenoti"
-                android:text="Title"
-                android:layout_marginLeft="110dp"
-                android:layout_marginTop="30dp"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/imageView1"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:textSize="20dp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/des1"
-                android:text="description"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="80dp"
-                android:layout_marginBottom="0dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/title1"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-
-            <Button
-                android:id ="@+id/btn1"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:background="@mipmap/ic_chat_black_48dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="110dp"
-                android:layout_marginBottom="20dp"
-                android:layout_below="@+id/des1"
-                >
-
-            </Button>
-
-            <TextView
-                android:id="@+id/comn"
-                android:text="100"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="140dp"
-                android:layout_marginBottom="0dp"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/btn1"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <Button
-                android:id ="@+id/btn2"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:background="@mipmap/love"
-                android:layout_marginLeft="175dp"
-                android:layout_marginTop="110dp"
-                android:layout_marginBottom="20dp"
-                android:layout_below="@+id/des1"
-                >
-
-            </Button>
-
-            <TextView
-                android:id="@+id/loven"
-                android:text="345"
-                android:layout_marginLeft="175dp"
-                android:layout_marginTop="140dp"
-                android:layout_marginBottom="0dp"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/btn2"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-
-            <Button
-                android:id ="@+id/btn3"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:background="@mipmap/share"
-                android:layout_marginLeft="280dp"
-                android:layout_marginTop="110dp"
-                android:layout_marginBottom="20dp"
-                android:layout_below="@+id/des1"
-                >
-
-            </Button>
-
-            <TextView
-                android:id="@+id/sharen"
-                android:text="345"
-                android:layout_marginLeft="280dp"
-                android:layout_marginTop="140dp"
-                android:layout_marginBottom="0dp"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/btn2"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-
-        </android.support.v7.widget.CardView>
 
 
     </LinearLayout>
-</ScrollView>
+</android.support.v4.widget.NestedScrollView>
