@@ -5,7 +5,6 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -13,29 +12,21 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.os.HandlerThread;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.accessibility.AccessibilityManagerCompat;
-import android.text.method.Touch;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.arlib.floatingsearchview.FloatingSearchView;
-import com.arlib.floatingsearchview.FloatingSearchView.OnLeftMenuClickListener;
 import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.LocationSource;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -45,19 +36,10 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import com.sr.thextest.R;
-import com.sr.thextest.adapter.GPSTracker;
-import com.sr.thextest.adapter.SingleShotLocationProvider;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
-import static android.content.ContentValues.TAG;
 import static android.content.Context.LOCATION_SERVICE;
-import static com.sr.thextest.R.id.location;
-import static com.sr.thextest.R.id.map;
 
 
 /**
@@ -262,6 +244,7 @@ public class MapHomeFragment extends Fragment implements com.google.android.gms.
                 Log.i("SR", status.getStatusMessage());
 
             } else if (resultCode == RESULT_CANCELED) {
+
                 // The user canceled the operation.
             }
         }
