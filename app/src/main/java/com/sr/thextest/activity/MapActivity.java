@@ -20,6 +20,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.arlib.floatingsearchview.FloatingSearchView;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -483,6 +484,7 @@ Log.i("SR","Start");
 
 
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(srlocation, 18));
+
 
 
 

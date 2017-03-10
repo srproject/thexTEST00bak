@@ -1,11 +1,17 @@
 package com.sr.thextest;
 
+import android.*;
+import android.Manifest;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.Window;
@@ -36,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     //ContactsFragment contactsFragment;
     MenuItem prevMenuItem;
     public static final int PERMISSIONS_MULTIPLE_REQUEST = 11;
+    DrawerLayout drawer;
+
 
 
     @Override
@@ -43,7 +51,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().hide();
+       getSupportActionBar().hide();
+
+
+
+
+
 
 
 
@@ -63,28 +76,23 @@ public class MainActivity extends AppCompatActivity {
                         switch (item.getItemId()) {
                             case R.id.navigation_home:
                                 viewPager.setCurrentItem(0);
-                                cameraFragment.closeCamera();
 
                                 return true;
                             case R.id.navigation_time:
                                 viewPager.setCurrentItem(1);
-                                cameraFragment.closeCamera();
 
                                 return true;
                             case R.id.navigation_noti:
                                 viewPager.setCurrentItem(2);
-                                cameraFragment.closeCamera();
 
                                 return true;
                             case R.id.navigation_pro:
                                 viewPager.setCurrentItem(3);
-                                cameraFragment.closeCamera();
 
                                 return true;
                             case R.id.navigation_camera:
                                 viewPager.setCurrentItem(4);
-                                cameraFragment.openCamera();
-                                return true;
+                                 return true;
 
                         }
                         return false;
@@ -155,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
         requestPermissions(new String[]{
                         android.Manifest.permission.CAMERA,
                         android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.LOCATION_HARDWARE,
                         android.Manifest.permission.ACCESS_FINE_LOCATION},
                 PERMISSIONS_MULTIPLE_REQUEST);
 
