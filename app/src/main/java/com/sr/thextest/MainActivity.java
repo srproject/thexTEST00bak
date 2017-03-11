@@ -6,6 +6,7 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -14,7 +15,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.sr.thextest.Fragment.CameraFragment;
@@ -23,7 +27,7 @@ import com.sr.thextest.Fragment.MapHomeFragment;
 import com.sr.thextest.Fragment.NewProFragment;
 import com.sr.thextest.Fragment.NotiFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
     BottomNavigationView bottomNavigationView;
 
@@ -43,6 +47,13 @@ public class MainActivity extends AppCompatActivity {
     MenuItem prevMenuItem;
     public static final int PERMISSIONS_MULTIPLE_REQUEST = 11;
     DrawerLayout drawer;
+
+
+    //for fab
+
+    private Boolean isFabOpen = false;
+    public FloatingActionButton fab, fab1, fab2, fab3, fab4;
+    public Animation fab_open, fab_close, rotate_forward, rotate_backward;
 
 
 
@@ -140,7 +151,14 @@ public class MainActivity extends AppCompatActivity {
         */
 
         setupViewPager(viewPager);
+
+
+
     }
+
+
+
+
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
