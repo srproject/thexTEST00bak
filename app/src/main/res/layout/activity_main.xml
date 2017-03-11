@@ -47,6 +47,103 @@
 
 
 
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="20dp"
+         app:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+        android:layout_marginBottom="360dp"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/ic_menu_send"
+        app:layout_behavior="com.codepath.floatingactionbuttontest.ScrollAwareFABBehavior"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="20dp"
+        app:elevation="6dp"
+        android:visibility="invisible"
+        app:pressedTranslationZ="12dp"
+        android:layout_marginBottom="290dp"
+        app:srcCompat="@drawable/ic_menu_send"
+        app:layout_behavior="com.codepath.floatingactionbuttontest.ScrollAwareFABBehavior"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="220dp"
+        android:layout_marginRight="20dp"
+        app:elevation="6dp"
+        android:visibility="invisible"
+        app:pressedTranslationZ="12dp"
+         app:srcCompat="@drawable/ic_menu_send"
+        app:layout_behavior="com.codepath.floatingactionbuttontest.ScrollAwareFABBehavior"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="150dp"
+        android:layout_marginRight="20dp"
+         app:elevation="6dp"
+        android:visibility="invisible"
+        app:pressedTranslationZ="12dp"
+         app:srcCompat="@drawable/ic_menu_share"
+        app:layout_behavior="com.codepath.floatingactionbuttontest.ScrollAwareFABBehavior"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="80dp"
+        android:layout_marginRight="20dp"
+        app:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+
+        app:srcCompat="@drawable/ic_add_white_24dp"
+        app:layout_behavior="com.codepath.floatingactionbuttontest.ScrollAwareFABBehavior"
+        />
+
+
+
+
+
+    <!-- For dim-->
+
+
+    <View
+        android:id="@+id/shadowView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#57929293"
+        android:visibility="gone" />
+
+</FrameLayout>
+
+
+
+
 </android.support.design.widget.CoordinatorLayout>
 
 
