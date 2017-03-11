@@ -49,7 +49,7 @@
 
         <TextView
             android:id="@+id/title1"
-            android:text="MATAB"
+            android:text="@string/event_name"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="20dp"
 
@@ -74,7 +74,7 @@
 
         <TextView
             android:id="@+id/title12"
-            android:text="Iron Man"
+            android:text="@string/account_name"
             android:layout_marginTop="55dp"
             android:layout_marginLeft="90dp"
             android:layout_width="wrap_content"
@@ -87,7 +87,7 @@
 
         <TextView
             android:id="@+id/des1"
-            android:text="description"
+            android:text="@string/description"
             android:layout_gravity="bottom|left"
             android:layout_marginTop="420dp"
             android:layout_marginLeft="30dp"
@@ -117,7 +117,7 @@
 
         <TextView
             android:id="@+id/commhn"
-            android:text="0"
+            android:text="@string/number_comment"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="0dp"
             android:layout_marginBottom="0dp"
@@ -146,7 +146,7 @@
 
         <TextView
             android:id="@+id/likehn"
-            android:text="0"
+            android:text="@string/number_like"
             android:layout_marginLeft="125dp"
             android:layout_marginTop="420dp"
             android:layout_marginBottom="0dp"
@@ -173,7 +173,7 @@
 
         <TextView
             android:id="@+id/dislikehn"
-            android:text="0"
+            android:text="@string/number_dis_like"
             android:layout_gravity="bottom|left"
             android:layout_marginLeft="252dp"
             android:layout_marginTop="420dp"
@@ -202,7 +202,7 @@
 
         <TextView
             android:id="@+id/sharen"
-            android:text="0"
+            android:text="@string/number_share"
             android:layout_gravity="bottom|left"
             android:layout_marginLeft="345dp"
             android:layout_marginTop="420dp"
@@ -265,7 +265,7 @@
 
         <TextView
             android:id="@+id/title02"
-            android:text="MATAB"
+            android:text="@string/event_name"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="20dp"
 
@@ -290,7 +290,7 @@
 
         <TextView
             android:id="@+id/title122"
-            android:text="Iron Man"
+            android:text="@string/account_name"
             android:layout_marginTop="55dp"
             android:layout_marginLeft="90dp"
             android:layout_width="wrap_content"
@@ -315,7 +315,7 @@
 
         <TextView
             android:id="@+id/des12"
-            android:text="description"
+            android:text="@string/description"
             android:layout_marginTop="320dp"
             android:layout_marginLeft="30dp"
             android:layout_marginBottom="100dp"
@@ -342,7 +342,7 @@
 
         <TextView
             android:id="@+id/commhn2"
-            android:text="0"
+            android:text="@string/number_comment"
             android:layout_marginLeft="60dp"
             android:layout_marginTop="420dp"
             android:layout_marginBottom="20dp"
@@ -369,7 +369,7 @@
 
         <TextView
             android:id="@+id/likehn2"
-            android:text="0"
+            android:text="@string/number_like"
             android:layout_marginLeft="156dp"
             android:layout_marginTop="420dp"
             android:layout_marginBottom="20dp"
@@ -396,7 +396,7 @@
 
         <TextView
             android:id="@+id/dislikehn2"
-            android:text="0"
+            android:text="@string/number_dis_like"
             android:layout_marginLeft="252dp"
             android:layout_marginTop="420dp"
             android:layout_marginBottom="20dp"
@@ -424,7 +424,7 @@
 
         <TextView
             android:id="@+id/sharen2"
-            android:text="0"
+            android:text="@string/number_share"
             android:layout_marginLeft="345dp"
             android:layout_marginTop="420dp"
             android:layout_marginBottom="40dp"

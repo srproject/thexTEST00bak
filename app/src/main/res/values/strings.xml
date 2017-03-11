@@ -42,4 +42,29 @@
     <string name="Phone">Phone Number</string>
     <string name="pref_user_name">Username</string>
 
+    <!-- strings for layout add event -->
+    <string name="get_location">GPS Location</string>
+    <string name="location_address">Location Address</string>
+    <string name="location_name">Location Name</string>
+
+    <!-- strings for TimeLine (Home) -->
+    <string name="event_name">Matab</string>
+    <string name="account_name">Iron Man</string>
+    <string name="description">Description</string>
+    <string name="number_comment">0</string>
+    <string name="number_like">0</string>
+    <string name="number_dis_like">0</string>
+    <string name="number_share">0</string>
+
+    <!-- strings for profiles -->
+    <string name="event">EVENTS</string>
+    <string name="number_event">0</string>
+    <string name="followers">FOLLOWERS</string>
+    <string name="number_followers">0</string>
+    <string name="likes">LIKES</string>
+    <string name="number_likes">0</string>
+    <string name="edit_profile">EDIT PROFILES</string>
+
+
+
 </resources>
