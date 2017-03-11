@@ -3,11 +3,14 @@ package com.sr.thextest;
 import android.*;
 import android.Manifest;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -17,8 +20,11 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.sr.thextest.Fragment.CameraFragment;
@@ -26,8 +32,10 @@ import com.sr.thextest.Fragment.HomeFragment;
 import com.sr.thextest.Fragment.MapHomeFragment;
 import com.sr.thextest.Fragment.NewProFragment;
 import com.sr.thextest.Fragment.NotiFragment;
+import com.sr.thextest.activity.AddEventActivity;
+import com.sr.thextest.activity.MapActivity;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity implements  View.OnClickListener , NavigationView.OnNavigationItemSelectedListener{
 
     BottomNavigationView bottomNavigationView;
 
@@ -47,6 +55,7 @@ public class MainActivity extends AppCompatActivity  {
     MenuItem prevMenuItem;
     public static final int PERMISSIONS_MULTIPLE_REQUEST = 11;
     DrawerLayout drawer;
+    Button DVbu;
 
 
     //for fab
@@ -54,7 +63,7 @@ public class MainActivity extends AppCompatActivity  {
     private Boolean isFabOpen = false;
     public FloatingActionButton fab, fab1, fab2, fab3, fab4;
     public Animation fab_open, fab_close, rotate_forward, rotate_backward;
-
+      View shadowView;
 
 
     @Override
@@ -152,6 +161,48 @@ public class MainActivity extends AppCompatActivity  {
 
         setupViewPager(viewPager);
 
+        //fab
+
+        fab = (FloatingActionButton)findViewById(R.id.fab);
+        fab1 = (FloatingActionButton)findViewById(R.id.fab1);
+        fab2 = (FloatingActionButton)findViewById(R.id.fab2);
+        fab3 = (FloatingActionButton)findViewById(R.id.fab3);
+        fab4 = (FloatingActionButton)findViewById(R.id.fab4);
+        fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
+        fab_close = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_close);
+        rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_forward);
+        rotate_backward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_backward);
+        shadowView =(View)findViewById(R.id.shadowView00);
+        fab.setOnClickListener(  this);
+        fab1.setOnClickListener(  this);
+        fab2.setOnClickListener(  this);
+        fab3.setOnClickListener(  this);
+        fab3.setOnClickListener(  this);
+        fab.setAnimation(fab_open);
+
+        final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerview = navigationView.getHeaderView(0);
+        LinearLayout header = (LinearLayout) headerview.findViewById(R.id.nav_view_header);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        DVbu=(Button)findViewById(R.id.DVbu);
+        DVbu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    drawer.openDrawer(drawer);
+
+                }
+                catch (Exception e) {
+
+                }
+            }
+        });
+
+
+
 
 
     }
@@ -188,6 +239,126 @@ public class MainActivity extends AppCompatActivity  {
     }
 
 
+
+
+//setup fab animation
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id){
+            case R.id.fab:
+                animateFAB();
+                break;
+            case R.id.fab1:
+
+                Log.d("Raj", "Fab 1");
+                break;
+            case R.id.fab2:
+
+                Log.d("Raj", "Fab 2");
+                break;
+        }
+    }
+
+
+//This for move fab
+
+    public void animateFAB(){
+
+
+        if(isFabOpen){
+
+            fab.startAnimation(rotate_backward);
+            fab1.startAnimation(fab_close);
+            fab2.startAnimation(fab_close);
+            fab1.setClickable(false);
+            fab2.setClickable(false);
+            fab3.startAnimation(fab_close);
+            fab4.startAnimation(fab_close);
+            fab3.setClickable(false);
+            fab4.setClickable(false);
+            isFabOpen = false;
+            Log.d("Raj", "close");
+
+            //for undim screen
+
+            shadowView.setVisibility(View.GONE);
+
+
+        } else {
+
+            fab.startAnimation(rotate_forward);
+            fab1.startAnimation(fab_open);
+            fab2.startAnimation(fab_open);
+            fab1.setClickable(true);
+            fab2.setClickable(true);
+            fab3.startAnimation(fab_open);
+            fab4.startAnimation(fab_open);
+            fab3.setClickable(true);
+            fab4.setClickable(true);
+            isFabOpen = true;
+            Log.d("Raj","open");
+
+            //for dim screen
+
+              shadowView.setVisibility(View.VISIBLE);
+
+
+        }
+    }
+
+    public void showFloatingActionButton() {
+        if (fab.getAnimation() == fab_close) {
+            fab.setAnimation(fab_open);
+
+
+        }
+    }
+
+
+    public void hideFloatingActionButton() {
+        fab.setAnimation(fab_close);
+    }
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.nav_item_Timeline) {
+            TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+            TabLayout.Tab tab = tabLayout.getTabAt(0);
+            tab.select();
+            // Handle the camera action
+        } else if (id == R.id.nav_item_Notification) {
+            TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+            TabLayout.Tab tab = tabLayout.getTabAt(1);
+            tab.select();
+
+        } else if (id == R.id.nav_item_Profile) {
+            TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+            TabLayout.Tab tab = tabLayout.getTabAt(2);
+            tab.select();
+
+        } else if (id == R.id.nav_item_Contacts) {
+
+        } else if (id == R.id.nav_item_setting) {
+            Intent intent = new Intent(MainActivity.this, AddEventActivity.class);
+            startActivity(intent);
+
+        } else if (id == R.id.nav_item_help) {
+            Intent intent = new Intent(MainActivity.this, MapActivity.class);
+            startActivity(intent);
+        }
+
+
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+
+     }
 }
 
 
