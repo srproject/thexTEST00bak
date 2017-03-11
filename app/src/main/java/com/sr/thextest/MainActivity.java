@@ -17,6 +17,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -192,7 +193,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
             @Override
             public void onClick(View v) {
                 try {
-                    drawer.openDrawer(drawer);
+                    drawer.openDrawer(Gravity.LEFT);
 
                 }
                 catch (Exception e) {
