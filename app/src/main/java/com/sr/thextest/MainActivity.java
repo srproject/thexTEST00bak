@@ -36,7 +36,7 @@ import com.sr.thextest.Fragment.NotiFragment;
 import com.sr.thextest.activity.AddEventActivity;
 import com.sr.thextest.activity.MapActivity;
 
-public class MainActivity extends AppCompatActivity implements  View.OnClickListener , NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements   NavigationView.OnNavigationItemSelectedListener{
 
     BottomNavigationView bottomNavigationView;
 
@@ -75,6 +75,28 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
        getSupportActionBar().hide();
 
 
+        final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerview = navigationView.getHeaderView(0);
+        LinearLayout header = (LinearLayout) headerview.findViewById(R.id.nav_view_header);
+        navigationView.setNavigationItemSelectedListener(this);
+
+     //   drawer.openDrawer(Gravity.LEFT);
+
+        DVbu=(Button)findViewById(R.id.DVbu);
+        DVbu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    drawer.openDrawer(Gravity.LEFT);
+
+                }
+                catch (Exception e) {
+
+                }
+            }
+        });
 
 
 
@@ -163,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
         setupViewPager(viewPager);
 
         //fab
-
+/*
         fab = (FloatingActionButton)findViewById(R.id.fab);
         fab1 = (FloatingActionButton)findViewById(R.id.fab1);
         fab2 = (FloatingActionButton)findViewById(R.id.fab2);
@@ -204,7 +226,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
 
 
 
-
+*/
 
     }
 
@@ -239,8 +261,13 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
 
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
+    }
 
 
+/*
 
 //setup fab animation
 
@@ -360,6 +387,8 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
         return true;
 
      }
+
+     */
 }
 
 

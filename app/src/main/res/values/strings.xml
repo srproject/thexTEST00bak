@@ -48,8 +48,8 @@
     <string name="location_name">Location Name</string>
 
     <!-- strings for TimeLine (Home) -->
-    <string name="event_name">Matab</string>
-    <string name="account_name">Iron Man</string>
+    <string name="event_name">event name</string>
+    <string name="account_name">user name</string>
     <string name="description">Description</string>
     <string name="number_comment">0</string>
     <string name="number_like">0</string>
