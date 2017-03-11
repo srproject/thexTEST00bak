@@ -9,6 +9,7 @@
     <string name="tab4">PROFILE</string>
     <string name="tab5">CAMERA</string>
 
+
     <!-- strings use in java class  -->
     <string name="action_settings">Settings</string>
     <string name="search">Search</string>
