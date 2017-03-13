@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@android:style/Widget.ScrollView"
-    app:layout_collapseMode="pin">
+     app:layout_collapseMode="pin">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="500dp"
+        android:id="@+id/lohome"
         android:gravity="center_horizontal"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
+
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -23,7 +25,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="20dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
 
 
             >
@@ -161,5 +163,5 @@
 
 
 
-    </LinearLayout>
+    </RelativeLayout>
 </android.support.v4.widget.NestedScrollView>
