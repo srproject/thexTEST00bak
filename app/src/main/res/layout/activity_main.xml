@@ -136,7 +136,7 @@
         android:id="@+id/shadowView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#57929293"
+        android:background="#72000000"
         android:visibility="gone" />
 
 </FrameLayout>

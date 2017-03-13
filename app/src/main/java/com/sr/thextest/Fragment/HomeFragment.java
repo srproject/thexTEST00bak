@@ -69,7 +69,6 @@ public class HomeFragment extends Fragment implements KeyListener {
         //for nteraction
         final TextView sharen = (TextView) rootView.findViewById(R.id.sharen);
         final TextView likehn = (TextView) rootView.findViewById(R.id.likehn);
-        final TextView dislikehn = (TextView) rootView.findViewById(R.id.dislikehn);
 
         final FloatingActionButton fabhshare1 = (FloatingActionButton) rootView.findViewById(R.id.fabhshare1);
         final FloatingActionButton fabhlike = (FloatingActionButton) rootView.findViewById(R.id.fabhlike);
@@ -131,24 +130,7 @@ public class HomeFragment extends Fragment implements KeyListener {
 
         });
 
-        fabhdislike.setOnClickListener(new View.OnClickListener() {
-            int disliken=0;
-            @Override
-            public void onClick(View v) {
-                //update text
 
-                disliken +=1;
-                dislikehn.setText(String.valueOf(disliken) );
-                //for share
-
-
-
-
-
-
-            }
-
-        });
 
 
             return rootView;

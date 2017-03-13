@@ -48,13 +48,13 @@
     <string name="location_name">Location Name</string>
 
     <!-- strings for TimeLine (Home) -->
-    <string name="event_name">event name</string>
+    <string name="event_type">event type</string>
     <string name="account_name">user name</string>
-    <string name="description">Description</string>
-    <string name="number_comment">0</string>
-    <string name="number_like">0</string>
-    <string name="number_dis_like">0</string>
-    <string name="number_share">0</string>
+    <string name="description">A description is a phrase or sentence that tells you what something is,
+     </string>
+    <string name="number_comment">0 Coments</string>
+    <string name="number_like">0 Likes</string>
+     <string name="number_share">0 Shares</string>
 
     <!-- strings for profiles -->
     <string name="event">EVENTS</string>
