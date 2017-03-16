@@ -38,7 +38,7 @@ public class NotiFragment extends Fragment {
 
 
 
-        imageNoti=(ImageView) rootView.findViewById(R.id.imageNoti);
+        //imageNoti=(ImageView) rootView.findViewById(R.id.imageNoti);
 
         return rootView;
 
@@ -48,7 +48,7 @@ public class NotiFragment extends Fragment {
 
     }
 
-
+/*
     //load Image From Storage
     private void loadImageFromStorage( )
     {
@@ -78,13 +78,13 @@ public class NotiFragment extends Fragment {
 
     }
     //END//load Image From Storage
-
+*/
 
     @Override
     public void onResume() {
         super.onResume();
 
-        loadImageFromStorage();
+      //  loadImageFromStorage();
 
 
     }

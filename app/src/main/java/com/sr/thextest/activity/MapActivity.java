@@ -128,6 +128,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         StringBuilder text2 = new StringBuilder();
 
         try {
+
             BufferedReader br1 = new BufferedReader(new FileReader(file1));
             BufferedReader br2 = new BufferedReader(new FileReader(file2));
 
@@ -136,12 +137,16 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
 
             while ((line1 = br1.readLine()) != null) {
                 text1.append(line1);
-             }
+                Log.i("sr","done read");
+
+            }
             br1.close();
             while ((line2 = br2.readLine()) != null) {
                 text2.append(line2);
+
             }
             br2.close();
+
         }
         catch (IOException e) {
             //You'll need to add proper error handling here

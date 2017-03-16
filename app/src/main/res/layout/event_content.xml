@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.sr.thex.activity.AddEventActivity"
-    tools:showIn="@layout/add_event_layout">
+    tools:showIn="@layout/event_layout">
 
 
 

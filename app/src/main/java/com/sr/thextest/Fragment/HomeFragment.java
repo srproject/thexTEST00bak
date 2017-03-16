@@ -1,28 +1,37 @@
 package com.sr.thextest.Fragment;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.method.KeyListener;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sr.thextest.Database.SQLiteDatabaseHelper;
 import com.sr.thextest.R;
 import com.sr.thextest.activity.CommentActivity;
+import com.sr.thextest.adapter.event.ListViewEventActivity;
+import com.sr.thextest.adapter.event.SQLiteListEventAdapter;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 /**
  * Created by sr on 2/22/17.
@@ -32,44 +41,44 @@ public class HomeFragment extends Fragment implements KeyListener {
 
     ImageView hprofile, imageView1;
 
-    static boolean scroll;
+    SQLiteDatabaseHelper SQLITEHELPER;
+    SQLiteDatabase SQLITEDATABASE;
+    Cursor cursor;
+    SQLiteListEventAdapter ListAdapter ;
+
+
+    ArrayList<String> event_type_ArrayList = new ArrayList<String>();
+    ArrayList<String> event_des_ArrayList = new ArrayList<String>();
+    ListView LISTVIEW;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
 
-        View rootView = inflater.inflate(R.layout.home_layout, container, false);
+        View rootView = inflater.inflate(R.layout.event_list_adapter, container, false);
 
         //((MainActivity) getActivity()).hideFloatingActionButton();
 
+        LISTVIEW = (ListView) rootView.findViewById(R.id.listev);
 
-        rootView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                if (scrollY < scrollX) {
-                    scroll = true;
-
-                }
-                if (scrollY < oldScrollY) {
-
-                    scroll = false;
+        SQLITEHELPER = new SQLiteDatabaseHelper(getContext());
 
 
-                }
-            }
-        });
+        ShowSQLiteDBdata() ;
+
 
 
         //for profile image
-        hprofile = (ImageView) rootView.findViewById(R.id.hprofile);
-        imageView1 = (ImageView) rootView.findViewById(R.id.imageView1);
+       // hprofile = (ImageView) rootView.findViewById(R.id.hprofile);
+       // imageView1 = (ImageView) rootView.findViewById(R.id.imageView1);
 
 
         //for nteraction
         final TextView sharen = (TextView) rootView.findViewById(R.id.sharen);
         final TextView likehn = (TextView) rootView.findViewById(R.id.likehn);
-
+/*
         final FloatingActionButton fabhshare1 = (FloatingActionButton) rootView.findViewById(R.id.fabhshare1);
         final FloatingActionButton fabhlike = (FloatingActionButton) rootView.findViewById(R.id.fabhlike);
         final FloatingActionButton fabhdislike = (FloatingActionButton) rootView.findViewById(R.id.fabhdislike);
@@ -130,7 +139,7 @@ public class HomeFragment extends Fragment implements KeyListener {
 
         });
 
-
+*/
 
 
             return rootView;
@@ -141,8 +150,8 @@ public class HomeFragment extends Fragment implements KeyListener {
     @Override
     public void onResume() {
         super.onResume();
-
-        loadImageFromStorage();
+        ShowSQLiteDBdata();
+//        loadImageFromStorage();
 
 
     }
@@ -222,5 +231,59 @@ public class HomeFragment extends Fragment implements KeyListener {
 
     }
 
+    private void ShowSQLiteDBdata() {
 
+        new CountDownTimer(1000, 800) {
+
+            public void onTick(long millisUntilFinished) {
+                //findViewById(R.id.loadingPanelev).setVisibility(View.VISIBLE);
+            }
+
+            public void onFinish() {
+
+
+                SQLITEDATABASE = SQLITEHELPER.getWritableDatabase();
+
+                cursor = SQLITEDATABASE.rawQuery("SELECT * FROM event", null);
+
+
+                event_type_ArrayList.clear();
+                event_des_ArrayList.clear();
+
+                if (cursor.moveToFirst()) {
+                    do {
+
+                        Log.i("SR", "DATALISTevent");
+
+
+                        event_type_ArrayList.add(cursor.getString(cursor.getColumnIndex(SQLiteDatabaseHelper.event_type)));
+
+                        event_des_ArrayList.add(cursor.getString(cursor.getColumnIndex(SQLiteDatabaseHelper.event_det)));
+
+
+                    } while (cursor.moveToNext());
+                }
+
+                ListAdapter = new SQLiteListEventAdapter(getContext(),
+
+                        event_type_ArrayList,
+                        event_des_ArrayList
+
+                );
+
+                LISTVIEW.setAdapter(ListAdapter);
+
+                cursor.close();
+
+            }
+        }.start();
+
+
+
+
+
+    }
 }
+
+
+

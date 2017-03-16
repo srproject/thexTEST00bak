@@ -37,6 +37,8 @@ import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
+import com.sr.thextest.Database.SQLiteDatabaseHelper;
+import com.sr.thextest.Fragment.MapHomeFragment;
 import com.sr.thextest.R;
 
 import java.io.BufferedReader;
@@ -63,19 +65,31 @@ public class AddEventActivity extends AppCompatActivity implements LocationListe
      int PLACE_PICKER_REQUEST=1;
      int CAMERA_PIC_REQUEST = 2;
 
+    double sr1,sr2;
+    StringBuilder text1 ,text2,text3;
+
 
     private LocationManager locationManager;
     private LocationListener listener;
 
     private static boolean isMySomeActivityVisible;
 
+    SQLiteDatabaseHelper myDB;
+    MapHomeFragment map;
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_event_layout);
+        setContentView(R.layout.event_layout);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //for control database
+        myDB= new SQLiteDatabaseHelper(this);
+        map= new MapHomeFragment();
+
 
 
         ActionBar actionBar = getSupportActionBar();
@@ -94,51 +108,7 @@ public class AddEventActivity extends AppCompatActivity implements LocationListe
         loc=(EditText)findViewById(R.id.locationmatab) ;
         locname=(EditText)findViewById(R.id.locname) ;
 
-
-        String appname = getString(R.string.app_name);
-
-        //  readFileAsString(Environment.getExternalStorageDirectory() + File.separator + "/" + appname + "/Text/");
-
-        String path1 = Environment.getExternalStorageDirectory() + File.separator + "/" + appname + "/Text/";
-
-
-
-//Get the text file
-        File file1 = new File(path1,"sr1.txt");
-        File file2 = new File(path1,"sr2.txt");
-        File file3 = new File(path1,"sr3.txt");
-
-//Read text from file
-        StringBuilder text1 = new StringBuilder();
-        StringBuilder text2 = new StringBuilder();
-        StringBuilder text3 = new StringBuilder();
-
-        try {
-            BufferedReader br1 = new BufferedReader(new FileReader(file1));
-            BufferedReader br2 = new BufferedReader(new FileReader(file2));
-            BufferedReader br3 = new BufferedReader(new FileReader(file3));
-
-            String line1;
-            String line2;
-            String line3;
-
-            while ((line1 = br1.readLine()) != null) {
-                text1.append(line1);
-            }
-            br1.close();
-            while ((line2 = br2.readLine()) != null) {
-                text2.append(line2);
-            }
-            br2.close();
-            while ((line3 = br3.readLine()) != null) {
-                text3.append(line3);
-            }
-            br3.close();
-        }
-        catch (IOException e) {
-            //You'll need to add proper error handling here
-        }
-
+        getdatatext();
 
         loc.setText(text1+","+text2);
         locname.setText(text3);
@@ -230,24 +200,24 @@ public class AddEventActivity extends AppCompatActivity implements LocationListe
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                    if(detailsmatab.length()<50){
+                    if(detailsmatab.length()<1){
 
 
                          detailscu.setText("");
 
                     }
-                    if(detailsmatab.length()>49){
+                    if(detailsmatab.length()>1){
 
 
                         dc2=detailsmatab.length();
                         detailscu.setText(Integer.toString(dc2));
 
                     }
-                    if(detailsmatab.length()<100){
+                    if(detailsmatab.length()<49){
 
                         detailscu.setTextColor(Color.parseColor("#FF0000"));
                     }
-                    if (detailsmatab.length()>=100){
+                    if (detailsmatab.length()>=49){
                         detailscu.setTextColor(Color.parseColor("#3CDE00"));
 
 
@@ -267,13 +237,45 @@ public class AddEventActivity extends AppCompatActivity implements LocationListe
             @Override
             public void onClick(View v) {
 
-                if(detailsmatab.length()<100){
+                if(detailsmatab.length()<0){
 
-                    Toast.makeText(getApplicationContext(), "No", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Minimum number of characters is 50", Toast.LENGTH_SHORT).show();
+
+
+
 
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), "Yes, Lets Go :)", Toast.LENGTH_SHORT).show();
+
+
+                    boolean inserted =myDB.insertDataforevent("bomb"
+                            ,timematab.getText().toString()
+                            ,datematab.getText().toString()
+                            ,text1.toString()
+                            ,text2.toString()
+                            ,text3.toString()
+                            ,detailsmatab.getText().toString()
+                            ,""
+                             );
+                    if( inserted == true){
+
+
+
+                        Toast.makeText(getApplicationContext(),"حبيبي تسلم event",Toast.LENGTH_SHORT).show();
+                        myDB.copyDatabase(getApplicationContext(),"data.db");
+                       // map.refreshmap();
+                         finish();
+
+
+
+
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext()," مش تسلم event",Toast.LENGTH_SHORT).show();
+                    }
+
+
+
 
                 }
             }
@@ -384,8 +386,9 @@ public class AddEventActivity extends AppCompatActivity implements LocationListe
             }
 
 
-            double sr1=place.getLatLng().latitude;
-            double sr2=place.getLatLng().longitude;
+              sr1=place.getLatLng().latitude;
+              sr2=place.getLatLng().longitude;
+
 
 
             writeToFile(String.valueOf(sr1),"sr1",getApplicationContext());
@@ -419,7 +422,9 @@ public class AddEventActivity extends AppCompatActivity implements LocationListe
 
     @Override
     protected void onResume() {
+
         super.onResume();
+        getdatatext();
         if( MapActivity.activityPaused()==true){
             loadImageFromStorage();
 
@@ -484,7 +489,8 @@ public class AddEventActivity extends AppCompatActivity implements LocationListe
 
     private void writeToFile(String data,String tx,Context context) {
         try {
-            String appname ="TheX";
+            String appname = getString(R.string.app_name);
+
             File folder = new File(Environment.getExternalStorageDirectory() + File.separator + "/" + appname + "/Text/");
             if (!folder.exists()) {
                 folder.mkdirs();
@@ -547,6 +553,64 @@ public class AddEventActivity extends AppCompatActivity implements LocationListe
 
     @Override
     public void onActivityDestroyed(Activity activity) {
+
+    }
+
+    public void getdatatext() {
+
+
+        String appname = getString(R.string.app_name);
+
+        //  readFileAsString(Environment.getExternalStorageDirectory() + File.separator + "/" + appname + "/Text/");
+
+        String path1 = Environment.getExternalStorageDirectory() + File.separator + "/" + appname + "/Text/";
+
+
+
+//Get the text file
+        File file1 = new File(path1,"sr1.txt");
+        File file2 = new File(path1,"sr2.txt");
+        File file3 = new File(path1,"sr3.txt");
+
+//Read text from file
+        text1 = new StringBuilder();
+        text2 = new StringBuilder();
+        text3 = new StringBuilder();
+
+        try {
+            BufferedReader br1 = new BufferedReader(new FileReader(file1));
+            BufferedReader br2 = new BufferedReader(new FileReader(file2));
+            BufferedReader br3 = new BufferedReader(new FileReader(file3));
+
+            String line1;
+            String line2;
+            String line3;
+
+            while ((line1 = br1.readLine()) != null) {
+                text1.append(line1);
+            }
+            br1.close();
+            while ((line2 = br2.readLine()) != null) {
+                text2.append(line2);
+            }
+            br2.close();
+            while ((line3 = br3.readLine()) != null) {
+                text3.append(line3);
+            }
+            br3.close();
+        }
+        catch (IOException e) {
+            //You'll need to add proper error handling here
+        }
+
+
+        loc.setText(text1+","+text2);
+        locname.setText(text3);
+
+
+
+
+
 
     }
 
