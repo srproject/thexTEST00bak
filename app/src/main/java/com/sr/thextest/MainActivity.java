@@ -36,7 +36,7 @@ import com.sr.thextest.Fragment.NotiFragment;
 import com.sr.thextest.activity.AddEventActivity;
 import com.sr.thextest.activity.MapActivity;
 
-public class MainActivity extends AppCompatActivity implements   NavigationView.OnNavigationItemSelectedListener , View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements   NavigationView.OnNavigationItemSelectedListener /*, View.OnClickListener */{
 
     BottomNavigationView bottomNavigationView;
 
@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements   NavigationView.
         */
 
         setupViewPager(viewPager);
-
+/*
         //fab
          fab = (FloatingActionButton)findViewById(R.id.fab);
         fab1 = (FloatingActionButton)findViewById(R.id.fab1);
@@ -179,6 +179,7 @@ public class MainActivity extends AppCompatActivity implements   NavigationView.
         fab3.setOnClickListener(  this);
         fab3.setOnClickListener(  this);
         fab.setAnimation(fab_open);
+        */
 
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -241,7 +242,7 @@ public class MainActivity extends AppCompatActivity implements   NavigationView.
 
 
 //setup fab animation
-
+/*
     @Override
     public void onClick(View v) {
         int id = v.getId();
@@ -319,7 +320,7 @@ public class MainActivity extends AppCompatActivity implements   NavigationView.
     public void hideFloatingActionButton() {
         fab.setAnimation(fab_close);
     }
-
+*/
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

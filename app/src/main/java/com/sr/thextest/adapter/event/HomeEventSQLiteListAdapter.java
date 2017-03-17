@@ -15,14 +15,14 @@ import com.sr.thextest.R;
 
 import java.util.ArrayList;
 
-public class SQLiteListEventAdapter extends BaseAdapter {
+public class HomeEventSQLiteListAdapter extends BaseAdapter {
 
     Context context;
      ArrayList<String> arevent_type;
      ArrayList<String> arevent_des ;
 
 
-    public SQLiteListEventAdapter(
+    public HomeEventSQLiteListAdapter(
             Context context2,
              ArrayList<String> arevent_type,
              ArrayList<String> subject

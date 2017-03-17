@@ -15,12 +15,12 @@ import com.sr.thextest.Database.SQLiteDatabaseHelper;
 
 import java.util.ArrayList;
 
-public class ListViewEventActivity extends AppCompatActivity {
+public class HomeEventListViewActivity extends AppCompatActivity {
 
     SQLiteDatabaseHelper SQLITEHELPER;
     SQLiteDatabase SQLITEDATABASE;
     Cursor cursor;
-    SQLiteListEventAdapter ListAdapter ;
+    HomeEventSQLiteListAdapter ListAdapter ;
 
 
     ArrayList<String> event_type_ArrayList = new ArrayList<String>();
@@ -34,7 +34,7 @@ public class ListViewEventActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.event_list_adapter);
+        setContentView(R.layout.home_event_list_adapter);
 
 
 
@@ -89,7 +89,7 @@ public class ListViewEventActivity extends AppCompatActivity {
                     } while (cursor.moveToNext());
                 }
 
-                ListAdapter = new SQLiteListEventAdapter(ListViewEventActivity.this,
+                ListAdapter = new HomeEventSQLiteListAdapter(HomeEventListViewActivity.this,
 
                         event_type_ArrayList,
                         event_des_ArrayList

@@ -19,7 +19,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:indeterminate="true" />
+
+
+
+
+
     </RelativeLayout>
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
 
 
 
@@ -35,10 +48,32 @@
 
 
 
+
     </ListView>
 
 
+        <Button
+            android:id="@+id/homeaddbu"
+            android:layout_gravity="center|left"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="180dp"
+            android:background="@drawable/add"
+            />
 
+
+
+
+
+        <View
+            android:id="@+id/shadowView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#72000000"
+            android:visibility="gone" />
+
+</FrameLayout>
 
 
 

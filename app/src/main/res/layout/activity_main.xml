@@ -19,10 +19,11 @@
 
     <Button
         android:id="@+id/DVbu"
-        android:layout_gravity="top|left"
+        android:layout_gravity="bottom|left"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_margin="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="70dp"
         android:background="@drawable/buttmain"
         />
 
@@ -45,7 +46,7 @@
         android:layout_alignParentTop="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-
+<!--
 
 <FrameLayout
     android:layout_width="match_parent"
@@ -129,7 +130,6 @@
 
 
 
-    <!-- For dim-->
 
 
     <View
@@ -140,7 +140,7 @@
         android:visibility="gone" />
 
 </FrameLayout>
-
+    -->
 
 
 

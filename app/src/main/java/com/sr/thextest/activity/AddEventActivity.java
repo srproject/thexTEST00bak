@@ -263,8 +263,7 @@ public class AddEventActivity extends AppCompatActivity implements LocationListe
 
                         Toast.makeText(getApplicationContext(),"حبيبي تسلم event",Toast.LENGTH_SHORT).show();
                         myDB.copyDatabase(getApplicationContext(),"data.db");
-                       // map.refreshmap();
-                         finish();
+                          finish();
 
 
 

@@ -12,6 +12,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.sr.thextest.R;
 
@@ -30,7 +31,7 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback {
     SurfaceView camView; // drawing camera preview using this variable
     SurfaceHolder surfaceHolder; // variable to hold surface for surfaceView which means display
     boolean camCondition = false;  // conditional variable for camera preview checking and set to false
-    FloatingActionButton cap;    // image capturing button
+    Button camerabu;    // image capturing button
 
 
 
@@ -80,9 +81,9 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback {
 
 
         // refering button id
-        cap = (FloatingActionButton) rootView.findViewById(R.id.Bcapture);
+        camerabu = (Button) rootView.findViewById(R.id.camerabu);
         // click event on button
-        cap.setOnClickListener(new View.OnClickListener() {
+        camerabu.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {

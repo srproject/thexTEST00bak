@@ -1,6 +1,5 @@
 package com.sr.thextest.Fragment;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -8,7 +7,6 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.method.KeyListener;
@@ -24,9 +22,7 @@ import android.widget.Toast;
 
 import com.sr.thextest.Database.SQLiteDatabaseHelper;
 import com.sr.thextest.R;
-import com.sr.thextest.activity.CommentActivity;
-import com.sr.thextest.adapter.event.ListViewEventActivity;
-import com.sr.thextest.adapter.event.SQLiteListEventAdapter;
+import com.sr.thextest.adapter.event.HomeEventSQLiteListAdapter;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -44,7 +40,7 @@ public class HomeFragment extends Fragment implements KeyListener {
     SQLiteDatabaseHelper SQLITEHELPER;
     SQLiteDatabase SQLITEDATABASE;
     Cursor cursor;
-    SQLiteListEventAdapter ListAdapter ;
+    HomeEventSQLiteListAdapter ListAdapter ;
 
 
     ArrayList<String> event_type_ArrayList = new ArrayList<String>();
@@ -57,7 +53,7 @@ public class HomeFragment extends Fragment implements KeyListener {
                              Bundle savedInstanceState) {
 
 
-        View rootView = inflater.inflate(R.layout.event_list_adapter, container, false);
+        View rootView = inflater.inflate(R.layout.home_event_list_adapter, container, false);
 
         //((MainActivity) getActivity()).hideFloatingActionButton();
 
@@ -264,7 +260,7 @@ public class HomeFragment extends Fragment implements KeyListener {
                     } while (cursor.moveToNext());
                 }
 
-                ListAdapter = new SQLiteListEventAdapter(getContext(),
+                ListAdapter = new HomeEventSQLiteListAdapter(getContext(),
 
                         event_type_ArrayList,
                         event_des_ArrayList

@@ -6,6 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
 
     <SurfaceView
         android:id="@+id/camerapreview"
@@ -13,17 +18,59 @@
         android:layout_height="match_parent" />
 
 
-    <android.support.design.widget.FloatingActionButton
+        <Button
+            android:id="@+id/camerabu"
+            android:layout_gravity="bottom|center"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="70dp"
+            android:background="@drawable/camera"
+            />
 
-        android:id="@+id/Bcapture"
-        android:onClick="launchCamera"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:src="@mipmap/ic_camera_white_24dp"
-        android:gravity="center_vertical|center_horizontal"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="20dp"></android.support.design.widget.FloatingActionButton>
 
+        <Button
+            android:id="@+id/cameraflashonbu"
+            android:layout_gravity="bottom|left"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="110dp"
+            android:layout_marginBottom="70dp"
+            android:background="@drawable/flashon"
+            />
+
+        <Button
+            android:id="@+id/vediocambu"
+            android:layout_gravity="bottom|right"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="90dp"
+            android:layout_marginBottom="70dp"
+            android:background="@drawable/videocam"
+            />
+
+
+        <Button
+            android:id="@+id/camcswbu"
+            android:layout_gravity="bottom|right"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="90dp"
+            android:layout_marginBottom="70dp"
+            android:visibility="gone"
+            android:background="@drawable/cameralogo"
+            />
+
+
+
+
+        <View
+            android:id="@+id/shadowView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#72000000"
+            android:visibility="gone" />
+
+    </FrameLayout>
 
 </RelativeLayout>

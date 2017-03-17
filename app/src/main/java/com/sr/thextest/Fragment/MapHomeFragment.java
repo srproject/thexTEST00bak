@@ -53,7 +53,7 @@ import static android.content.Context.LOCATION_SERVICE;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MapHomeFragment extends Fragment implements com.google.android.gms.location.LocationListener,AccessibilityManagerCompat.TouchExplorationStateChangeListener,GoogleMap.OnMarkerClickListener {
+public class MapHomeFragment extends Fragment implements com.google.android.gms.location.LocationListener, AccessibilityManagerCompat.TouchExplorationStateChangeListener, GoogleMap.OnMarkerClickListener {
 
 
     public MapHomeFragment() {
@@ -72,7 +72,7 @@ public class MapHomeFragment extends Fragment implements com.google.android.gms.
     double lng;
     double lat;
 
-    String name1,lat1,lng1;
+    String name1, lat1, lng1;
 
     SQLiteDatabaseHelper SQLITEHELPER;
     SQLiteDatabase SQLITEDATABASE;
@@ -90,53 +90,6 @@ public class MapHomeFragment extends Fragment implements com.google.android.gms.
         getdataevent();
 
         //getdatafromevent();
-
-
-        listener = new LocationListener() {
-            @Override
-            public void onLocationChanged(Location location) {
-
-                if (location != null) {
-
-                    ff = new LatLng(location.getLatitude(), location.getLongitude());
-
-                    CameraPosition cameraPosition = new CameraPosition.Builder().target(ff).zoom(16).tilt(20).build();
-                    googleMap.clear();
-                    googleMap.addMarker(new MarkerOptions().position(ff).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_location_on_black_48dp)).title("This My Location"));
-                    googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition), 700, null);
-
-
-
-
-
-
-
-
-
-
-
-
-                }
-
-            }
-
-            @Override
-            public void onStatusChanged(String provider, int status, Bundle extras) {
-
-            }
-
-            @Override
-            public void onProviderEnabled(String provider) {
-
-            }
-
-            @Override
-            public void onProviderDisabled(String provider) {
-
-            }
-        };
-      //  getlatlong();
-
 
 
 
@@ -158,7 +111,31 @@ public class MapHomeFragment extends Fragment implements com.google.android.gms.
             public void onMapReady(GoogleMap mMap) {
                 googleMap = mMap;
 
+
+
+                if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return;
+                }
+
                 // For showing a move to my location button
+
+
+
+
+                // Enable / Disable Compass icon
+                googleMap.getUiSettings().setCompassEnabled(true);
+
+                // Enable / Disable Rotate gesture
+                googleMap.getUiSettings().setRotateGesturesEnabled(true);
+
+
 
 
                 Iterator<LatLng> iterator = latLngs.iterator();
@@ -168,28 +145,21 @@ public class MapHomeFragment extends Fragment implements com.google.android.gms.
                     while (iterator.hasNext()) {
 
 
-
-
                         googleMap.addMarker(new MarkerOptions().position(iterator.next()).snippet("SR SR SR  SR SR SR  \n ").title(iterator2.next()));
 
 
                     }
 
 
-
-
                 }
-
-
 
 
                 LatLng sydney = new LatLng(lat, lng);
 
 
                 googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-                CameraUpdate zoom=CameraUpdateFactory.zoomTo(14);
+                CameraUpdate zoom = CameraUpdateFactory.zoomTo(14);
                 googleMap.animateCamera(zoom);
-
 
 
                 listener = new LocationListener() {
@@ -197,23 +167,13 @@ public class MapHomeFragment extends Fragment implements com.google.android.gms.
                     public void onLocationChanged(Location location) {
 
                         if (location != null) {
-/*
+
                             ff = new LatLng(location.getLatitude(), location.getLongitude());
 
                             CameraPosition cameraPosition = new CameraPosition.Builder().target(ff).zoom(16).tilt(20).build();
-                            googleMap.clear();
-                            googleMap.addMarker(new MarkerOptions().position(ff).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_location_on_black_48dp)).title("This My Location"));
-                            googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition), 700, null);
-
-*/
-
-
-
-
-
-
-
-
+                            //   googleMap.clear();
+                            // googleMap.addMarker(new MarkerOptions().position(ff).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_location_on_black_48dp)).title("This My Location"));
+                            //   googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition), 700, null);
 
 
                         }
@@ -293,28 +253,31 @@ public class MapHomeFragment extends Fragment implements com.google.android.gms.
         }
     }
 
-   public void getlatlong() {
+    public void getlatlong() {
         // first check for permissions
-        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.INTERNET}
-                        , 10);
-            }
-            return;
-        }
-        // this code won't execute IF permissions are not allowed, because in the line above there is return statement.
 
+        // this code won't execute IF permissions are not allowed, because in the line above there is return statement.
 
 
         //noinspection MissingPermission
 
-        if(isNetworkStatusAvialable (getContext())) {
-          //  Toast.makeText(getContext(), "internet avialable", Toast.LENGTH_LONG).show();
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0.0f, listener );
+        if (isNetworkStatusAvialable(getContext())) {
+            //  Toast.makeText(getContext(), "internet avialable", Toast.LENGTH_LONG).show();
+            if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
+//            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0.0f, listener);
 
         } else {
             Toast.makeText(getContext(), "internet is not avialable (For faster connect to internet)", Toast.LENGTH_LONG).show();
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0.0f, listener );
+            locationManager.requestLocationUpdates(LocationManager.PASSIVE_PROVIDER, 0, 0.0f, listener );
 
 
         }
@@ -428,7 +391,7 @@ public class MapHomeFragment extends Fragment implements com.google.android.gms.
                             ff = new LatLng(location.getLatitude(), location.getLongitude());
 
                             CameraPosition cameraPosition = new CameraPosition.Builder().target(ff).zoom(16).tilt(20).build();
-                            googleMap.clear();
+                           // googleMap.clear();
                             googleMap.addMarker(new MarkerOptions().position(ff).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_location_on_black_48dp)).title("This My Location"));
                             googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition), 700, null);
 

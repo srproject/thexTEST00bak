@@ -24,6 +24,7 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 
     public static final String event_TABLE="event";
     public static  final String event_id="event_id";
+    public static  final String event_account_id="event_account_id";
     public static  final String event_type="event_type";
     public static  final String event_time="event_time";
     public static  final String event_date="event_date";
@@ -32,6 +33,66 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
     public static  final String event_locnam="event_locnam";
     public static  final String event_det="event_det";
     public static  final String event_photo="event_photo";
+    public static  final String event_map_snap="event_map_snap";
+
+
+    //EVENT Table
+
+    public static final String event_area_TABLE="event_area";
+    public static  final String event_area_id="event_area_id";
+    public static  final String event_area_account_id="event_area_account_id";
+    public static  final String event_area_type="event_area_type";
+    public static  final String event_area_time="event_area_time";
+    public static  final String event_area_date="event_area_date";
+    public static  final String event_area_latitude="event_area_latitude";
+    public static  final String event_area_longitude="event_area_longitude";
+    public static  final String event_area_locnam="event_area_locnam";
+    public static  final String event_area_area_det="event_area_det";
+    public static  final String event_area_area_photo="event_area_photo";
+    public static  final String event_area_map_snap="event_area_map_snap";
+
+
+
+
+
+    // event_comment_TABLE
+
+    public static final String event_comment_TABLE="event_comment";
+    public static  final String comment_id="comment_id";
+    public static  final String event_comment_id="event_comment_id";
+    public static  final String event_account_comment_id="event_account_comment_id";
+    public static  final String comment_text="comment_text";
+    public static  final String event_comment_date="event_comment_date";
+    public static  final String event_comment_time="event_comment_time";
+
+    // event_like_TABLE
+
+    public static final String event_like_TABLE="event_like";
+    public static  final String like_id="like_id";
+    public static  final String event_like_id="event_like_id";
+    public static  final String event_account_like_id="event_account_like_id";
+    public static  final String event_like_date="event_like_date";
+    public static  final String event_like_time="event_like_time";
+
+    // event_share_TABLE
+
+    public static final String event_share_TABLE="event_share";
+    public static  final String share_id="share_id";
+    public static  final String event_share_id="event_share_id";
+    public static  final String event_account_share_id="event_account_share_id";
+    public static  final String event_share_date="event_share_date";
+    public static  final String event_share_time="event_share_time";
+
+    // event_share_TABLE
+
+    public static final String event_ex_photo_TABLE="event_ex_photo";
+    public static  final String photo_id="photo_id";
+    public static  final String event_photo_id="event_photo_id";
+    public static  final String event_account_photo_id="event_account_photo_id";
+    public static  final String event_photo_date="event_photo_date";
+    public static  final String event_photo_time="event_photo_time";
+    public static  final String event_photo_data="event_photo_data";
+
 
     //ACCOUNT Table
 
@@ -41,6 +102,25 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
     public static  final String account_email="account_email";
     public static  final String account_phone="account_phone";
     public static  final String account_password="account_password";
+    // ACCOUNT permission
+    public static  final String permission_inter="permission_inter";
+    public static  final String permission_event="permission_event";
+    public static  final String permission_comm="permission_comm";
+    public static  final String permission_share="permission_share";
+    public static  final String permission_like="permission_like";
+    public static  final String permission_camera="permission_camera";
+    public static  final String permission_profile="permission_profile";
+    public static  final String permission_editprofile="permission_editprofile";
+    public static  final String permission_map="permission_map";
+    public static  final String permission_noti="permission_noti";
+    public static  final String permission_showevent="permission_showevent";
+    public static  final String permission_meventsolf="permission_meventsolf";
+    public static  final String permission_block="permission_block";
+    public static  final String permission_report="permission_report";
+
+
+
+
 
 
 
@@ -52,6 +132,21 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
     public static  final String profile_name="profile_name";
     public static  final String profile_sex="profile_sex";
     public static  final String profile_age="profile_age";
+    public static  final String profile_loc="profile_loc";
+    public static  final String profile_edu="profile_edu";
+    public static  final String profile_rel="profile_rel";
+
+
+    //follow FOR ACCOUNT Table
+
+    public static final String follow_TABLE="follow";
+    public static  final String follow_id="follow_id";
+    public static  final String follow_account_id="follow_account_id";
+    public static  final String follower_account_id="follower_account_id";
+    public static  final String following_account_id="following_account_id";
+
+
+
 
 
 
@@ -121,6 +216,7 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 
 
 
+        //db.execSQL("DELETE FROM event " );
 
 
 
