@@ -162,12 +162,6 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("create table event (event_id INTEGER PRIMARY KEY AUTOINCREMENT" +
-                ", event_type VARCHAR ,event_time VARCHAR " +
-                ",event_date VARCHAR ,event_latitude VARCHAR " +
-                ",event_longitude VARCHAR " +
-                ",event_locnam VARCHAR " +
-                ",event_det VARCHAR , event_photo BLOB) ;" );
 
 
         // db.execSQL("create table * (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME VARCHAR ,LON VARCHAR ,LAT VARCHAR) ;  " );
