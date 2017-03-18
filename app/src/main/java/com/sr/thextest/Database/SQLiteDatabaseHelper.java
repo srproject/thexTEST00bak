@@ -701,7 +701,7 @@ public boolean insertDataforEventShareExPhoto (String iphoto_id,String ievent_ph
 
 
 
-// Update data into table event
+// Update data into table event *SR*
 
     public boolean UpdateDataforevent (String ievent_id,String ievent_account_id,String ievent_type,String ievent_time,String ievent_date
             ,String ievent_latitude,String ievent_longitude,String ievent_locnam,String ievent_det,String ievent_photo ,String ievent_map_snap) {
@@ -737,7 +737,10 @@ public boolean insertDataforEventShareExPhoto (String iphoto_id,String ievent_ph
             return true;
         }
     }
-    //Update data into table area event
+
+
+    //Update data into table area event *SR*
+
     public boolean UpdateDataforEventArea(String ievent_area_id,String ievent_area_account_id,String ievent_area_type,String ievent_area_time,String ievent_area_date
             ,String ievent_area_latitude,String ievent_area_longitude,String ievent_area_locnam,String ievent_area_area_det,String ievent_area_area_photo,String ievent_area_map_snap){
         SQLiteDatabase db=this.getWritableDatabase();
@@ -769,7 +772,10 @@ public boolean insertDataforEventShareExPhoto (String iphoto_id,String ievent_ph
 
 
     }
-    //Update data into event_comment_TABLE  * M Y *
+
+
+    //Update data into event_comment_TABLE  *SR*
+
     public boolean UpdateDataforComment (String icomment_id,String ievent_comment_id, String ievent_account_comment_id ,
                                          String icomment_text,String ievent_comment_date,String ievent_comment_time){
 
@@ -794,7 +800,8 @@ public boolean insertDataforEventShareExPhoto (String iphoto_id,String ievent_ph
 
     }
 
-    //Update data into event_like_TABLE * M Y *
+
+    //Update data into event_like_TABLE *SR*
 
     public boolean UpdateDataforLike (String ilike_id, String ievent_like_id, String ievent_account_like_id , String ievent_like_date ,String ievent_like_time ){
 
@@ -818,7 +825,10 @@ public boolean insertDataforEventShareExPhoto (String iphoto_id,String ievent_ph
 
 
     }
-    //Update data into event_share_table  * M Y *
+
+
+    //Update data into event_share_table  *SR*
+
     public boolean UpdateDataforEventShare (String ishare_id ,String ievent_share_id, String ievent_account_share_id, String ievent_share_date,String ievent_share_time ){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -843,7 +853,9 @@ public boolean insertDataforEventShareExPhoto (String iphoto_id,String ievent_ph
 
     }
 
-    //Update data into event shre table * M Y *
+
+    //Update data into event shre table *SR*
+
     public boolean UpdateDataforEventShareExPhoto (String iphoto_id,String ievent_photo_id, String ievent_account_photo_id , String ievent_photo_date ,
                                                    String ievent_photo_time,String ievent_photo_data ){
 
@@ -868,7 +880,9 @@ public boolean insertDataforEventShareExPhoto (String iphoto_id,String ievent_ph
 
     }
 
-    //Update data into account table * M Y *
+
+    //Update data into account table *SR*
+
     public boolean UpdateDataforAccount(String iaccount_id,String iaccount_type,String iaccount_email,String iaccount_phone, String iaccount_password,
                                         String ipermission_inter,String ipermission_event, String ipermission_comm,String ipermission_share,String ipermission_like,
                                         String ipermission_camera,String ipermission_profile,String ipermission_editprofile,String ipermission_map,String ipermission_noti
@@ -914,7 +928,9 @@ public boolean insertDataforEventShareExPhoto (String iphoto_id,String ievent_ph
             return true;
         }
     }
-    //Update data into profile table * M Y *
+
+    //Update data into profile table *SR*
+
     public boolean UpdateDataforProfile(String iprofile_id,String iprofile_account_id,String iprofile_name,String iprofile_sex, String iprofile_age,
                                         String iprofile_loc ,String iprofile_edu,String iprofile_rel ){
         SQLiteDatabase db =this.getWritableDatabase();
