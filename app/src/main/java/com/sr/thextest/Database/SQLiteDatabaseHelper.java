@@ -165,21 +165,21 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 
         //EVENT Table
 
-         db.execSQL("create table event (event_id VARCHAR, event_account_id VARCHAR " +
+         db.execSQL("create table event (event_id VARCHAR PRIMARY KEY, event_account_id VARCHAR " +
                  ",event_type VARCHAR ,event_date VARCHAR" +
                  ",event_latitude VARCHAR ,event_longitude VARCHAR" +
                  ",event_locnam VARCHAR ,event_det VARCHAR" +
-                 ",event_photo BLOB ,event_map_snap BLOB)" +
+                 ",event_photo BLOB ,event_map_snap BLOB  )" +
                  " ;  " );
 
 
         //event_area Table
 
-        db.execSQL("create table event_area (event_area_id VARCHAR, event_area_account_id VARCHAR " +
+        db.execSQL("create table event_area (event_area_id VARCHAR PRIMARY KEY, event_area_account_id VARCHAR " +
                 ",event_area_type VARCHAR ,event_area_date VARCHAR" +
                 ",event_area_latitude VARCHAR ,event_area_longitude VARCHAR" +
                 ",event_area_locnam VARCHAR ,event_area_det VARCHAR" +
-                ",event_area_photo BLOB ,event_area_map_snap BLOB)" +
+                ",event_area_photo BLOB ,event_area_map_snap BLOB   )" +
                 " ;  " );
 
 
@@ -269,18 +269,101 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 
 
 
+        //EVENT Table
+
+        db.execSQL("create table IF NOT EXISTS event (event_id VARCHAR PRIMARY KEY, event_account_id VARCHAR " +
+                ",event_type VARCHAR ,event_date VARCHAR" +
+                ",event_latitude VARCHAR ,event_longitude VARCHAR" +
+                ",event_locnam VARCHAR ,event_det VARCHAR" +
+                ",event_photo BLOB ,event_map_snap BLOB  )" +
+                " ;  " );
 
 
-        db.execSQL("create table IF NOT EXISTS event (event_id INTEGER PRIMARY KEY AUTOINCREMENT" +
-                ", event_type VARCHAR ,event_time VARCHAR " +
-                ",event_date VARCHAR ,event_latitude VARCHAR " +
-                ",event_longitude VARCHAR " +
-                ",event_det VARCHAR , event_photo BLOB) ;" );
+        //event_area Table
+
+        db.execSQL("create table IF NOT EXISTS event_area (event_area_id VARCHAR PRIMARY KEY, event_area_account_id VARCHAR " +
+                ",event_area_type VARCHAR ,event_area_date VARCHAR" +
+                ",event_area_latitude VARCHAR ,event_area_longitude VARCHAR" +
+                ",event_area_locnam VARCHAR ,event_area_det VARCHAR" +
+                ",event_area_photo BLOB ,event_area_map_snap BLOB   )" +
+                " ;  " );
+
+
+        // event_comment TABLE
+
+        db.execSQL("create table IF NOT EXISTS event_comment (comment_id VARCHAR PRIMARY KEY, event_comment_id VARCHAR " +
+                ",event_account_comment_id VARCHAR ,comment_text VARCHAR" +
+                ",event_comment_date VARCHAR ,event_comment_time VARCHAR)" +
+                " ;  " );
+
+
+        // event_like TABLE
+
+        db.execSQL("create table IF NOT EXISTS event_like (like_id VARCHAR PRIMARY KEY, event_like_id VARCHAR " +
+                ",event_account_like_id VARCHAR ,event_like_date VARCHAR" +
+                ",event_like_time VARCHAR )" +
+                " ;  " );
+
+
+        // event_share TABLE
+
+
+        db.execSQL("create table IF NOT EXISTS event_share (share_id VARCHAR PRIMARY KEY, event_share_id VARCHAR " +
+                ",event_account_share_id VARCHAR ,event_share_date VARCHAR" +
+                ",event_share_time VARCHAR )" +
+                " ;  " );
+
+
+        // event_ex_photo TABLE
+
+
+        db.execSQL("create table IF NOT EXISTS event_ex_photo (photo_id VARCHAR PRIMARY KEY, event_photo_id VARCHAR " +
+                ",event_account_photo_id VARCHAR ,event_photo_date VARCHAR" +
+                ",event_photo_time VARCHAR ,event_photo_data BOLE)" +
+                " ;  " );
+
+
+        //ACCOUNT Table
+
+
+
+        db.execSQL("create table IF NOT EXISTS account (photo_id VARCHAR PRIMARY KEY, account_id VARCHAR " +
+                ",account_type VARCHAR ,account_email VARCHAR" +
+                ",account_phone VARCHAR ,account_password VARCHAR" +
+                ",permission_inter VARCHAR ,permission_event VARCHAR" +
+                ",permission_comm VARCHAR ,permission_share VARCHAR" +
+                ",permission_like VARCHAR ,permission_camera VARCHAR" +
+                ",permission_profile VARCHAR ,permission_editprofile VARCHAR" +
+                ",permission_map VARCHAR ,permission_noti VARCHAR" +
+                ",permission_showevent VARCHAR ,permission_make_event_solve VARCHAR" +
+                ",permission_block VARCHAR ,permission_report VARCHAR" +
+                ",permission_blocku_admin VARCHAR ,permission_deleteu_admin VARCHAR" +
+                ",permission_photo_hide VARCHAR ,permission_photo_hide_admin VARCHAR" +
+                ",permission_photo_delete VARCHAR)" +
+                " ;  " );
 
 
 
 
-      //  db.execSQL("create table IF EXISTS * (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME VARCHAR ,LON VARCHAR ,LAT VARCHAR) ;  " );
+        //PROFILE FOR ACCOUNT Table
+
+
+        db.execSQL("create table IF NOT EXISTS profile (profile_id VARCHAR PRIMARY KEY, profile_account_id VARCHAR " +
+                ",profile_name VARCHAR ,profile_sex VARCHAR" +
+                ",profile_age VARCHAR ,profile_loc VARCHAR" +
+                ",profile_edu VARCHAR ,profile_rel VARCHAR)" +
+                " ;  " );
+
+
+
+
+        //follow FOR ACCOUNT Table
+
+
+        db.execSQL("create table IF NOT EXISTS follow (follow_id VARCHAR PRIMARY KEY, follow_account_id VARCHAR " +
+                ",profile_name VARCHAR ,profile_sex VARCHAR" +
+                ",follower_account_id VARCHAR ,following_account_id VARCHAR)" +
+                " ;  " );
 
 
     }
@@ -614,6 +697,268 @@ public boolean insertDataforEventShareExPhoto (String iphoto_id,String ievent_ph
 
         return true;
     }
+
+
+
+
+// Update data into table event
+
+    public boolean UpdateDataforevent (String ievent_id,String ievent_account_id,String ievent_type,String ievent_time,String ievent_date
+            ,String ievent_latitude,String ievent_longitude,String ievent_locnam,String ievent_det,String ievent_photo ,String ievent_map_snap) {
+
+
+
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(event_id,ievent_id);
+        contentValues.put(event_account_id,ievent_account_id);
+        contentValues.put(event_type, ievent_type);
+        contentValues.put(event_time, ievent_time);
+        contentValues.put(event_date, ievent_date);
+        contentValues.put(event_latitude, ievent_latitude);
+        contentValues.put(event_longitude, ievent_longitude);
+        contentValues.put(event_locnam, ievent_locnam);
+        contentValues.put(event_det, ievent_det);
+        contentValues.put(event_photo, ievent_photo);
+        contentValues.put(event_map_snap,ievent_map_snap);
+
+
+
+
+        //db.execSQL("DELETE FROM event " );
+
+
+        long result = db.update(event_TABLE, contentValues, "event_id="+ievent_id, null);
+        if (result == -1) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    //Update data into table area event
+    public boolean UpdateDataforEventArea(String ievent_area_id,String ievent_area_account_id,String ievent_area_type,String ievent_area_time,String ievent_area_date
+            ,String ievent_area_latitude,String ievent_area_longitude,String ievent_area_locnam,String ievent_area_area_det,String ievent_area_area_photo,String ievent_area_map_snap){
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues contentValues =new ContentValues();
+        contentValues.put(event_area_id,ievent_area_id);
+        contentValues.put(event_area_account_id,ievent_area_account_id);
+        contentValues.put(event_area_type,ievent_area_type);
+        contentValues.put(event_area_time,ievent_area_time);
+        contentValues.put(event_area_date,ievent_area_date);
+        contentValues.put(event_area_latitude,ievent_area_latitude);
+        contentValues.put(event_area_longitude,ievent_area_longitude);
+        contentValues.put(event_area_locnam,ievent_area_locnam);
+        contentValues.put(event_area_area_det,ievent_area_area_det);
+        contentValues.put(event_area_area_photo,ievent_area_area_photo);
+        contentValues.put(event_area_map_snap,ievent_area_map_snap);
+
+
+
+
+        long result = db.update(event_area_TABLE, contentValues, "event_area_id="+ievent_area_id, null);
+        if (result == -1) {
+            return false;
+        }
+        else {
+            return true;
+        }
+
+
+
+
+    }
+    //Update data into event_comment_TABLE  * M Y *
+    public boolean UpdateDataforComment (String icomment_id,String ievent_comment_id, String ievent_account_comment_id ,
+                                         String icomment_text,String ievent_comment_date,String ievent_comment_time){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(comment_id,icomment_id);
+        contentValues.put(event_comment_id, ievent_comment_id);
+        contentValues.put(event_account_comment_id, ievent_account_comment_id);
+        contentValues.put(comment_text,icomment_text );
+        contentValues.put(event_comment_date,ievent_comment_date );
+        contentValues.put(event_comment_time,ievent_comment_time );
+
+        long result = db.update(event_comment_TABLE, contentValues, "comment_id="+icomment_id, null);
+        if (result == -1) {
+            return false;
+        }
+        else {
+            return true;
+        }
+
+
+    }
+
+    //Update data into event_like_TABLE * M Y *
+
+    public boolean UpdateDataforLike (String ilike_id, String ievent_like_id, String ievent_account_like_id , String ievent_like_date ,String ievent_like_time ){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(like_id,ilike_id);
+        contentValues.put(event_like_id, ievent_like_id);
+        contentValues.put(event_account_like_id, ievent_account_like_id);
+        contentValues.put(event_like_date,ievent_like_date );
+        contentValues.put(event_like_time,ievent_like_time );
+
+
+        long result = db.update(event_like_TABLE, contentValues, "like_id="+ilike_id, null);
+        if (result == -1) {
+            return false;
+        }
+        else {
+            return true;
+        }
+
+
+    }
+    //Update data into event_share_table  * M Y *
+    public boolean UpdateDataforEventShare (String ishare_id ,String ievent_share_id, String ievent_account_share_id, String ievent_share_date,String ievent_share_time ){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(share_id,ishare_id);
+        contentValues.put(event_share_id,ievent_share_id );
+        contentValues.put(event_account_share_id,ievent_account_share_id );
+        contentValues.put(event_share_date,ievent_share_date);
+        contentValues.put(event_share_time,ievent_share_time);
+
+
+
+        long result = db.update(event_share_TABLE, contentValues, "share_id="+ishare_id, null);
+        if (result == -1) {
+            return false;
+        }
+        else {
+            return true;
+        }
+
+
+    }
+
+    //Update data into event shre table * M Y *
+    public boolean UpdateDataforEventShareExPhoto (String iphoto_id,String ievent_photo_id, String ievent_account_photo_id , String ievent_photo_date ,
+                                                   String ievent_photo_time,String ievent_photo_data ){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(photo_id,iphoto_id);
+        contentValues.put(event_photo_id,ievent_photo_id);
+        contentValues.put(event_account_photo_id,ievent_account_photo_id);
+        contentValues.put(event_photo_date,ievent_photo_date );
+        contentValues.put(event_photo_time,ievent_photo_time );
+        contentValues.put(event_photo_data,ievent_photo_data);
+
+        long result = db.update(event_ex_photo_TABLE, contentValues, "photo_id="+iphoto_id, null);
+        if (result == -1) {
+            return false;
+        }
+        else {
+            return true;
+        }
+
+
+    }
+
+    //Update data into account table * M Y *
+    public boolean UpdateDataforAccount(String iaccount_id,String iaccount_type,String iaccount_email,String iaccount_phone, String iaccount_password,
+                                        String ipermission_inter,String ipermission_event, String ipermission_comm,String ipermission_share,String ipermission_like,
+                                        String ipermission_camera,String ipermission_profile,String ipermission_editprofile,String ipermission_map,String ipermission_noti
+            ,String ipermission_showevent ,String ipermission_make_event_solve,String ipermission_block,String ipermission_report
+            ,String ipermission_blocku_admin,String ipermission_deleteu_admin,String ipermission_photo_hide,
+                                        String ipermission_photo_hide_admin,String ipermission_photo_delete){
+
+        SQLiteDatabase db =this.getWritableDatabase();
+        ContentValues contentValues =new ContentValues();
+        contentValues.put(account_id,iaccount_id);
+        contentValues.put(account_type,iaccount_type);
+        contentValues.put(account_email,iaccount_email);
+        contentValues.put(account_phone,iaccount_phone);
+        contentValues.put(account_password,iaccount_password);
+        contentValues.put(permission_inter,ipermission_inter);
+        contentValues.put(permission_event,ipermission_event);
+        contentValues.put(permission_comm,ipermission_comm);
+        contentValues.put(permission_share,ipermission_share);
+        contentValues.put(permission_like,ipermission_like);
+        contentValues.put(permission_camera,ipermission_camera);
+        contentValues.put(permission_profile,ipermission_profile);
+        contentValues.put(permission_editprofile,ipermission_editprofile);
+        contentValues.put(permission_map,ipermission_map);
+        contentValues.put(permission_noti,ipermission_noti);
+        contentValues.put(permission_showevent,ipermission_showevent);
+        contentValues.put(permission_make_event_solve,ipermission_make_event_solve);
+        contentValues.put(permission_block,ipermission_block);
+        contentValues.put(permission_report,ipermission_report);
+        contentValues.put(permission_blocku_admin,ipermission_blocku_admin);
+        contentValues.put(permission_deleteu_admin,ipermission_deleteu_admin);
+        contentValues.put(permission_photo_hide,ipermission_photo_hide);
+        contentValues.put(permission_photo_hide_admin,ipermission_photo_hide_admin);
+        contentValues.put(permission_photo_delete,ipermission_photo_delete);
+
+
+
+
+        long result = db.update(account_TABLE, contentValues, "account_id="+iaccount_id, null);
+        if(result == -1) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    //Update data into profile table * M Y *
+    public boolean UpdateDataforProfile(String iprofile_id,String iprofile_account_id,String iprofile_name,String iprofile_sex, String iprofile_age,
+                                        String iprofile_loc ,String iprofile_edu,String iprofile_rel ){
+        SQLiteDatabase db =this.getWritableDatabase();
+        ContentValues contentValues =new ContentValues();
+        contentValues.put(profile_id,iprofile_id);
+        contentValues.put(profile_account_id,iprofile_account_id);
+        contentValues.put(profile_name,iprofile_name);
+        contentValues.put(profile_sex,iprofile_sex);
+        contentValues.put(profile_age,iprofile_age);
+        contentValues.put(profile_loc,iprofile_loc);
+        contentValues.put(profile_edu,iprofile_edu);
+        contentValues.put(profile_rel,iprofile_rel);
+
+        long result = db.update(profile_TABLE, contentValues, "profile_id="+iprofile_id, null);
+        if(result == -1) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    //Update data into follow table
+    public boolean UpdateDataforFollow(String ifollow_id,String ifollow_account_id,String ifollower_account_id,String ifollowing_account_id){
+        SQLiteDatabase db= this.getWritableDatabase();
+        ContentValues contentValues= new ContentValues();
+        contentValues.put(follow_id,ifollow_id);
+        contentValues.put(follow_account_id,ifollow_account_id);
+        contentValues.put(follower_account_id,ifollower_account_id);
+        contentValues.put(following_account_id,ifollowing_account_id);
+
+        long result = db.update(follow_TABLE, contentValues, "follow_id="+ifollow_id, null);
+        if(result == -1){
+            return false;
+        }
+        else {
+            return  true;
+        }
+    }
+
+
+
+
+
     /* function to delet Data data */
 
 //delete data from event table
@@ -789,8 +1134,4 @@ public boolean insertDataforEventShareExPhoto (String iphoto_id,String ievent_ph
             }
         }
     }
-
-
 }
-
-
