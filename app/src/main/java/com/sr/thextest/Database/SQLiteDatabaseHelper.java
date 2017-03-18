@@ -567,31 +567,136 @@ public boolean insertDataforEventShareExPhoto (String iphoto_id,String ievent_ph
     }
     /* function to delet Data data */
 
-    public boolean deletData(String id){
+//delete data from event table
+    public boolean deletevent(String id){
         SQLiteDatabase db = this.getWritableDatabase();
-
-
-       // String UpdateRecordQuery = "DELETE FROM "+event_TABLE+" WHERE ID = "+id+";";
-
-
-
-     //   db.execSQL(UpdateRecordQuery);
-
+       String UpdateRecordQuery = "DELETE FROM "+event_TABLE+" WHERE ID = "+id+";";
+        db.execSQL(UpdateRecordQuery);
         return true;
     }
+    //delete data from area table
+    public boolean deletarea(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String UpdateRecordQuery = "DELETE FROM "+event_area_TABLE+" WHERE ID = "+id+";";
+        db.execSQL(UpdateRecordQuery);
+        return true;
+    }
+    //delete data from comment table
+    public boolean deletecomment(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String UpdateRecordQuery = "DELETE FROM "+event_comment_TABLE+" WHERE ID = "+id+";";
+        db.execSQL(UpdateRecordQuery);
+        return true;
+    }
+    //delete data from like table
+    public boolean deletelike(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String UpdateRecordQuery = "DELETE FROM "+event_like_TABLE+" WHERE ID = "+id+";";
+        db.execSQL(UpdateRecordQuery);
+        return true;
+    }
+    //delete data from share table
+    public boolean deleteshare(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String UpdateRecordQuery = "DELETE FROM "+event_share_TABLE+" WHERE ID = "+id+";";
+        db.execSQL(UpdateRecordQuery);
+        return true;
+    }
+    //delete data from Exphoto table
+    public boolean deleteExphoto(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String UpdateRecordQuery = "DELETE FROM "+event_ex_photo_TABLE+" WHERE ID = "+id+";";
+        db.execSQL(UpdateRecordQuery);
+        return true;
+    }
+    //delete data from account table
+    public boolean deleteaccount(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String UpdateRecordQuery = "DELETE FROM "+account_TABLE+" WHERE ID = "+id+";";
+        db.execSQL(UpdateRecordQuery);
+        return true;
+    }
+    //delete data from profile table
+    public boolean deleteprofile(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String UpdateRecordQuery = "DELETE FROM "+profile_TABLE+" WHERE ID = "+id+";";
+        db.execSQL(UpdateRecordQuery);
+        return true;
+    }
+    //delete data from follow table
+    public boolean deletefollow(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String UpdateRecordQuery = "DELETE FROM "+follow_TABLE+" WHERE ID = "+id+";";
+        db.execSQL(UpdateRecordQuery);
+        return true;
+    }
+
     /* function to delet all Data data */
 
-    public boolean deletallData( ){
+//delete All data from event table *my*
+    public boolean deleteallDataevent( ){
         SQLiteDatabase db = this.getWritableDatabase();
-
-
-        //String UpdateRecordQuery = "DELETE FROM "+TABLE_NAME;
-
-
-//        db.execSQL(UpdateRecordQuery);
-
+        String UpdateRecordQuery = "DELETE ALL FROM "+event_TABLE;
+       db.execSQL(UpdateRecordQuery);
         return true;
     }
+    //delete All data from event area table *my*
+    public boolean deleteallDataarea( ){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String UpdateRecordQuery = "DELETE ALL FROM  "+event_area_TABLE;
+        db.execSQL(UpdateRecordQuery);
+        return true;
+    }
+    //delete All data from comment table
+    public boolean deletealldatacomment ( ){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String UpdateRecordQuery = "DELETE ALL FROM"+event_comment_TABLE;
+        db.execSQL(UpdateRecordQuery);
+        return true;
+    }
+    //delete All data from like table
+    public boolean deletealldatalike ( ){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String UpdateRecordQuery = "DELETE ALL FROM"+event_like_TABLE;
+        db.execSQL(UpdateRecordQuery);
+        return true;
+    }
+    //delete All data from share table
+    public boolean deletealldatashare ( ){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String UpdateRecordQuery = "DELETE ALL FROM"+event_share_TABLE;
+        db.execSQL(UpdateRecordQuery);
+        return true;
+    }
+    //delete All data from event_ex_photo_TABLE
+    public boolean deletealldataExphoto ( ){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String UpdateRecordQuery = "DELETE ALL FROM"+event_ex_photo_TABLE;
+        db.execSQL(UpdateRecordQuery);
+        return true;
+    }
+    //delete All data from account TABLE
+    public boolean deletealldataaccount ( ){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String UpdateRecordQuery = "DELETE ALL FROM"+account_TABLE;
+        db.execSQL(UpdateRecordQuery);
+        return true;
+    }
+    //delete All data from profile TABLE
+    public boolean deletealldataorofile ( ){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String UpdateRecordQuery = "DELETE ALL FROM "+profile_TABLE;
+        db.execSQL(UpdateRecordQuery);
+        return true;
+    }
+    //delete All data from follow TABLE
+    public boolean deletealldatafollow ( ){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String UpdateRecordQuery = "DELETE ALL FROM"+follow_TABLE;
+        db.execSQL(UpdateRecordQuery);
+        return true;
+    }
+
 
     public static void copyDatabase(Context c, String DATABASE_NAME) {
         String databasePath = c.getDatabasePath(DATABASE_NAME).getPath();
