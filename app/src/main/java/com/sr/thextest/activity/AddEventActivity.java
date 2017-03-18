@@ -86,7 +86,7 @@ public class AddEventActivity extends AppCompatActivity implements LocationListe
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+//SR
 
         //for control database
         myDB= new SQLiteDatabaseHelper(this);
