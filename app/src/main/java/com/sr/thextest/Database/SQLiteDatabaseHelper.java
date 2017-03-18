@@ -156,8 +156,6 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 
 
 
-
-
     public SQLiteDatabaseHelper(Context context ) {
         super(context, DATABASE_NAME, null, 1);
     }
