@@ -36,7 +36,7 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
     public static  final String event_map_snap="event_map_snap";
 
 
-    //EVENT Table
+    //event_area Table
 
     public static final String event_area_TABLE="event_area";
     public static  final String event_area_id="event_area_id";
@@ -52,10 +52,7 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
     public static  final String event_area_map_snap="event_area_map_snap";
 
 
-
-
-
-    // event_comment_TABLE
+    // event_comment TABLE
 
     public static  final  String event_comment_TABLE="event_comment";
     public static  final String comment_id="comment_id";
@@ -65,7 +62,9 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
     public static  final String event_comment_date="event_comment_date";
     public static  final String event_comment_time="event_comment_time";
 
-    // event_like_TABLE
+
+
+    // event_like TABLE
 
     public static final String event_like_TABLE="event_like";
     public static  final String like_id="like_id";
@@ -74,7 +73,9 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
     public static  final String event_like_date="event_like_date";
     public static  final String event_like_time="event_like_time";
 
-    // event_share_TABLE
+
+
+    // event_share TABLE
 
     public static final String event_share_TABLE="event_share";
     public static  final String share_id="share_id";
@@ -83,7 +84,9 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
     public static  final String event_share_date="event_share_date";
     public static  final String event_share_time="event_share_time";
 
-    // event_share_TABLE
+
+
+    // event_ex_photo TABLE
 
     public static final String event_ex_photo_TABLE="event_ex_photo";
     public static  final String photo_id="photo_id";
@@ -92,6 +95,8 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
     public static  final String event_photo_date="event_photo_date";
     public static  final String event_photo_time="event_photo_time";
     public static  final String event_photo_data="event_photo_data";
+
+
 
 
     //ACCOUNT Table
@@ -117,9 +122,11 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
     public static  final String permission_make_event_solve="permission_make_event_solve";
     public static  final String permission_block="permission_block";
     public static  final String permission_report="permission_report";
-
-
-
+    public static  final String permission_blocku_admin="permission_blocku_admin";
+    public static  final String permission_deleteu_admin="permission_deleteu_admin";
+    public static  final String permission_photo_hide="permission_photo_hide";
+    public static  final String permission_photo_hide_admin="permission_photo_hide_admin";
+    public static  final String permission_photo_delete="permission_photo_delete";
 
 
 
@@ -135,6 +142,8 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
     public static  final String profile_loc="profile_loc";
     public static  final String profile_edu="profile_edu";
     public static  final String profile_rel="profile_rel";
+
+
 
 
     //follow FOR ACCOUNT Table
@@ -156,9 +165,102 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+        //EVENT Table
+
+         db.execSQL("create table event (event_id VARCHAR, event_account_id VARCHAR " +
+                 ",event_type VARCHAR ,event_date VARCHAR" +
+                 ",event_latitude VARCHAR ,event_longitude VARCHAR" +
+                 ",event_locnam VARCHAR ,event_det VARCHAR" +
+                 ",event_photo BLOB ,event_map_snap BLOB)" +
+                 " ;  " );
 
 
-        // db.execSQL("create table * (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME VARCHAR ,LON VARCHAR ,LAT VARCHAR) ;  " );
+        //event_area Table
+
+        db.execSQL("create table event_area (event_area_id VARCHAR, event_area_account_id VARCHAR " +
+                ",event_area_type VARCHAR ,event_area_date VARCHAR" +
+                ",event_area_latitude VARCHAR ,event_area_longitude VARCHAR" +
+                ",event_area_locnam VARCHAR ,event_area_det VARCHAR" +
+                ",event_area_photo BLOB ,event_area_map_snap BLOB)" +
+                " ;  " );
+
+
+        // event_comment TABLE
+
+        db.execSQL("create table event_comment (comment_id VARCHAR PRIMARY KEY, event_comment_id VARCHAR " +
+                ",event_account_comment_id VARCHAR ,comment_text VARCHAR" +
+                ",event_comment_date VARCHAR ,event_comment_time VARCHAR)" +
+                 " ;  " );
+
+
+        // event_like TABLE
+
+        db.execSQL("create table event_like (like_id VARCHAR PRIMARY KEY, event_like_id VARCHAR " +
+                ",event_account_like_id VARCHAR ,event_like_date VARCHAR" +
+                ",event_like_time VARCHAR )" +
+                " ;  " );
+
+
+        // event_share TABLE
+
+
+        db.execSQL("create table event_share (share_id VARCHAR PRIMARY KEY, event_share_id VARCHAR " +
+                ",event_account_share_id VARCHAR ,event_share_date VARCHAR" +
+                ",event_share_time VARCHAR )" +
+                " ;  " );
+
+
+        // event_ex_photo TABLE
+
+
+        db.execSQL("create table event_ex_photo (photo_id VARCHAR PRIMARY KEY, event_photo_id VARCHAR " +
+                ",event_account_photo_id VARCHAR ,event_photo_date VARCHAR" +
+                ",event_photo_time VARCHAR ,event_photo_data BOLE)" +
+                " ;  " );
+
+
+        //ACCOUNT Table
+
+
+
+        db.execSQL("create table account (photo_id VARCHAR PRIMARY KEY, account_id VARCHAR " +
+                ",account_type VARCHAR ,account_email VARCHAR" +
+                ",account_phone VARCHAR ,account_password VARCHAR" +
+                ",permission_inter VARCHAR ,permission_event VARCHAR" +
+                ",permission_comm VARCHAR ,permission_share VARCHAR" +
+                ",permission_like VARCHAR ,permission_camera VARCHAR" +
+                ",permission_profile VARCHAR ,permission_editprofile VARCHAR" +
+                ",permission_map VARCHAR ,permission_noti VARCHAR" +
+                ",permission_showevent VARCHAR ,permission_make_event_solve VARCHAR" +
+                ",permission_block VARCHAR ,permission_report VARCHAR" +
+                ",permission_blocku_admin VARCHAR ,permission_deleteu_admin VARCHAR" +
+                ",permission_photo_hide VARCHAR ,permission_photo_hide_admin VARCHAR" +
+                ",permission_photo_delete VARCHAR)" +
+                " ;  " );
+
+
+
+
+        //PROFILE FOR ACCOUNT Table
+
+
+        db.execSQL("create table profile (profile_id VARCHAR PRIMARY KEY, profile_account_id VARCHAR " +
+                ",profile_name VARCHAR ,profile_sex VARCHAR" +
+                ",profile_age VARCHAR ,profile_loc VARCHAR" +
+                ",profile_edu VARCHAR ,profile_rel VARCHAR)" +
+                " ;  " );
+
+
+
+
+        //follow FOR ACCOUNT Table
+
+
+        db.execSQL("create table follow (follow_id VARCHAR PRIMARY KEY, follow_account_id VARCHAR " +
+                ",profile_name VARCHAR ,profile_sex VARCHAR" +
+                ",follower_account_id VARCHAR ,following_account_id VARCHAR)" +
+                 " ;  " );
+
 
 
 
@@ -166,6 +268,9 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+
+
 
 
         db.execSQL("create table IF NOT EXISTS event (event_id INTEGER PRIMARY KEY AUTOINCREMENT" +
