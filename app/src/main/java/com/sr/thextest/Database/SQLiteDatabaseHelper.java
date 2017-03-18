@@ -316,7 +316,7 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 
 
 
-        long result = db.insert("event", null, contentValues);
+        long result = db.insert(event_TABLE, null, contentValues);
         if (result == -1) {
             return false;
         }
@@ -344,7 +344,7 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 
 
 
-        long result = db.insert("event_area", null, contentValues);
+        long result = db.insert(event_area_TABLE, null, contentValues);
         if (result == -1) {
             return false;
         }
@@ -370,7 +370,7 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(event_comment_date,ievent_comment_date );
         contentValues.put(event_comment_time,ievent_comment_time );
 
-        long result = db.insert("event_comment", null, contentValues);
+        long result = db.insert(event_comment_TABLE, null, contentValues);
         if (result == -1) {
             return false;
         }
@@ -395,7 +395,7 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(event_like_time,ievent_like_time );
 
 
-        long result = db.insert("event_like", null, contentValues);
+        long result = db.insert(event_like_TABLE, null, contentValues);
         if (result == -1) {
             return false;
         }
@@ -419,7 +419,7 @@ public boolean insertDataforEventShare (String ishare_id ,String ievent_share_id
 
 
 
-    long result = db.insert("event_share", null, contentValues);
+    long result = db.insert(event_share_TABLE, null, contentValues);
     if (result == -1) {
         return false;
     }
@@ -444,7 +444,7 @@ public boolean insertDataforEventShareExPhoto (String iphoto_id,String ievent_ph
     contentValues.put(event_photo_time,ievent_photo_time );
     contentValues.put(event_photo_data,ievent_photo_data);
 
-    long result = db.insert("event_ex_photo", null, contentValues);
+    long result = db.insert(event_ex_photo_TABLE, null, contentValues);
     if (result == -1) {
         return false;
     }
@@ -493,7 +493,7 @@ public boolean insertDataforEventShareExPhoto (String iphoto_id,String ievent_ph
 
 
 
-        long result =db.insert("account",null,contentValues);
+        long result =db.insert(account_TABLE,null,contentValues);
         if(result == -1) {
             return false;
         }
@@ -515,7 +515,7 @@ public boolean insertDataforEventShareExPhoto (String iphoto_id,String ievent_ph
         contentValues.put(profile_edu,iprofile_edu);
         contentValues.put(profile_rel,iprofile_rel);
 
-        long result =db.insert("profile",null,contentValues);
+        long result =db.insert(profile_TABLE,null,contentValues);
         if(result == -1) {
             return false;
         }
@@ -533,7 +533,7 @@ public boolean insertDataforEventShareExPhoto (String iphoto_id,String ievent_ph
         contentValues.put(follower_account_id,ifollower_account_id);
         contentValues.put(following_account_id,ifollowing_account_id);
 
-        long result =db.insert("follow",null,contentValues);
+        long result =db.insert(follow_TABLE, null,contentValues);
         if(result == -1){
             return false;
         }
@@ -542,14 +542,63 @@ public boolean insertDataforEventShareExPhoto (String iphoto_id,String ievent_ph
         }
     }
 
-    //function to show the data */
-
-    public Cursor getAllDataforeventtest() {
+    /*function to show the data */
+//get data from event
+    public Cursor getEvent() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res= db.rawQuery("select * from event ",null);
+        Cursor res= db.rawQuery("select * from  event ",null);
         return  res;
-
     }
+    //get data from area
+    public Cursor getArea() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res= db.rawQuery("select * from  event_area ",null);
+        return  res;
+    }
+    //get data from comment
+    public Cursor getComment() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res= db.rawQuery("select * from  event_comment ",null);
+        return  res;
+    }
+    //get data from like
+    public Cursor getLike() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res= db.rawQuery("select * from  event_like ",null);
+        return  res;
+    }
+    //get data from share
+    public Cursor getShare() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res= db.rawQuery("select * from  event_share",null);
+        return  res;
+    }
+    //get data from ex_photo
+    public Cursor getExphoto() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res= db.rawQuery("select * from event_ex_photo  ",null);
+        return  res;
+    }
+    //get data from account
+    public Cursor getAccount() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res= db.rawQuery("select * from account  ",null);
+        return  res;
+    }
+    //get data from profile
+    public Cursor getProfile() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res= db.rawQuery("select * from profile  ",null);
+        return  res;
+    }
+    //get data from follow
+    public Cursor getFollow() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res= db.rawQuery("select * from follow  ",null);
+        return  res;
+    }
+
+
 
     /* function to updata data */
 
