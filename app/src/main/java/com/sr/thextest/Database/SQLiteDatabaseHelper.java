@@ -326,14 +326,46 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+//insert data into table area event
+    public boolean insertDataforEventArea(String ievent_area_id,String ievent_area_account_id,String ievent_area_type,String ievent_area_time,String ievent_area_date
+            ,String ievent_area_latitude,String ievent_area_longitude,String ievent_area_locnam,String ievent_area_area_det,String ievent_area_area_photo,String ievent_area_map_snap){
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues contentValues =new ContentValues();
+        contentValues.put(event_area_id,ievent_area_id);
+        contentValues.put(event_area_account_id,ievent_area_account_id);
+        contentValues.put(event_area_type,ievent_area_type);
+        contentValues.put(event_area_time,ievent_area_time);
+        contentValues.put(event_area_date,ievent_area_date);
+        contentValues.put(event_area_latitude,ievent_area_latitude);
+        contentValues.put(event_area_longitude,ievent_area_longitude);
+        contentValues.put(event_area_locnam,ievent_area_locnam);
+        contentValues.put(event_area_area_det,ievent_area_area_det);
+        contentValues.put(event_area_area_photo,ievent_area_area_photo);
+        contentValues.put(event_area_map_snap,ievent_area_map_snap);
 
+
+
+
+        long result = db.insert("event_area", null, contentValues);
+        if (result == -1) {
+            return false;
+        }
+        else {
+            return true;
+        }
+
+
+
+
+    }
     //insert data into event_comment_TABLE  * M Y *
-    public boolean insertDataForComment (String ievent_comment_id, String ievent_account_comment_id ,
+    public boolean insertDataforComment (String icomment_id,String ievent_comment_id, String ievent_account_comment_id ,
                                          String icomment_text,String ievent_comment_date,String ievent_comment_time){
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
+        contentValues.put(comment_id,icomment_id);
         contentValues.put(event_comment_id, ievent_comment_id);
         contentValues.put(event_account_comment_id, ievent_account_comment_id);
         contentValues.put(comment_text,icomment_text );
@@ -353,11 +385,12 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 
     //insert data into event_like_TABLE * M Y *
 
-    public boolean insertDataforLike (String ievent_like_id, String ievent_account_like_id , String ievent_like_date ,String ievent_like_time ){
+    public boolean insertDataforLike (String ilike_id, String ievent_like_id, String ievent_account_like_id , String ievent_like_date ,String ievent_like_time ){
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
+        contentValues.put(like_id,ilike_id);
         contentValues.put(event_like_id, ievent_like_id);
         contentValues.put(event_account_like_id, ievent_account_like_id);
         contentValues.put(event_like_date,ievent_like_date );
@@ -375,15 +408,17 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 
     }
 //insert data into event_share_table  * M Y *
-public boolean insertDataforShare (String ievent_share_id, String ievent_account_share_id , String ievent_share_date ,String ievent_share_time ){
+public boolean insertDataforEventShare (String ishare_id ,String ievent_share_id, String ievent_account_share_id, String ievent_share_date,String ievent_share_time ){
 
     SQLiteDatabase db = this.getWritableDatabase();
 
     ContentValues contentValues = new ContentValues();
+    contentValues.put(share_id,ishare_id);
     contentValues.put(event_share_id,ievent_share_id );
     contentValues.put(event_account_share_id,ievent_account_share_id );
-    contentValues.put(event_share_date,ievent_share_date );
-    contentValues.put(event_share_time, ievent_share_time);
+    contentValues.put(event_share_date,ievent_share_date);
+    contentValues.put(event_share_time,ievent_share_time);
+
 
 
     long result = db.insert("event_share", null, contentValues);
@@ -397,14 +432,67 @@ public boolean insertDataforShare (String ievent_share_id, String ievent_account
 
 }
 
+//insert data into event shre table * M Y *
+public boolean insertDataforEventShareExPhoto (String iphoto_id,String ievent_photo_id, String ievent_account_photo_id , String ievent_photo_date ,
+                                               String ievent_photo_time,String ievent_photo_data ){
+
+    SQLiteDatabase db = this.getWritableDatabase();
+
+    ContentValues contentValues = new ContentValues();
+    contentValues.put(photo_id,iphoto_id);
+    contentValues.put(event_photo_id,ievent_photo_id);
+    contentValues.put(event_account_photo_id,ievent_account_photo_id);
+    contentValues.put(event_photo_date,ievent_photo_date );
+    contentValues.put(event_photo_time,ievent_photo_time );
+    contentValues.put(event_photo_data,ievent_photo_data);
+
+    long result = db.insert("event_ex_photo", null, contentValues);
+    if (result == -1) {
+        return false;
+    }
+    else {
+        return true;
+    }
+
+
+}
+
 //insert data into account table * M Y *
-    public boolean insertDataforAccount(String iaccount_type,String iaccount_email,String iaccount_phone, String iaccount_password){
+    public boolean insertDataforAccount(String iaccount_id,String iaccount_type,String iaccount_email,String iaccount_phone, String iaccount_password,
+                                        String ipermission_inter,String ipermission_event, String ipermission_comm,String ipermission_share,String ipermission_like,
+                                        String ipermission_camera,String ipermission_profile,String ipermission_editprofile,String ipermission_map,String ipermission_noti
+                                         ,String ipermission_showevent ,String ipermission_make_event_solve,String ipermission_block,String ipermission_report
+                                            ,String ipermission_blocku_admin,String ipermission_deleteu_admin,String ipermission_photo_hide,
+                                        String ipermission_photo_hide_admin,String ipermission_photo_delete){
+
         SQLiteDatabase db =this.getWritableDatabase();
         ContentValues contentValues =new ContentValues();
+        contentValues.put(account_id,iaccount_id);
         contentValues.put(account_type,iaccount_type);
         contentValues.put(account_email,iaccount_email);
         contentValues.put(account_phone,iaccount_phone);
         contentValues.put(account_password,iaccount_password);
+        contentValues.put(permission_inter,ipermission_inter);
+        contentValues.put(permission_event,ipermission_event);
+        contentValues.put(permission_comm,ipermission_comm);
+        contentValues.put(permission_share,ipermission_share);
+        contentValues.put(permission_like,ipermission_like);
+        contentValues.put(permission_camera,ipermission_camera);
+        contentValues.put(permission_profile,ipermission_profile);
+        contentValues.put(permission_editprofile,ipermission_editprofile);
+        contentValues.put(permission_map,ipermission_map);
+        contentValues.put(permission_noti,ipermission_noti);
+        contentValues.put(permission_showevent,ipermission_showevent);
+        contentValues.put(permission_make_event_solve,ipermission_make_event_solve);
+        contentValues.put(permission_block,ipermission_block);
+        contentValues.put(permission_report,ipermission_report);
+        contentValues.put(permission_blocku_admin,ipermission_blocku_admin);
+        contentValues.put(permission_deleteu_admin,ipermission_deleteu_admin);
+        contentValues.put(permission_photo_hide,ipermission_photo_hide);
+        contentValues.put(permission_photo_hide_admin,ipermission_photo_hide_admin);
+        contentValues.put(permission_photo_delete,ipermission_photo_delete);
+
+
 
 
         long result =db.insert("account",null,contentValues);
@@ -416,10 +504,11 @@ public boolean insertDataforShare (String ievent_share_id, String ievent_account
         }
     }
     //insert data into profile table * M Y *
-    public boolean insertDataforProfile(String iprofile_account_id,String iprofile_name,String iprofile_sex, String iprofile_age,
+    public boolean insertDataforProfile(String iprofile_id,String iprofile_account_id,String iprofile_name,String iprofile_sex, String iprofile_age,
                                         String iprofile_loc ,String iprofile_edu,String iprofile_rel ){
         SQLiteDatabase db =this.getWritableDatabase();
         ContentValues contentValues =new ContentValues();
+        contentValues.put(profile_id,iprofile_id);
         contentValues.put(profile_account_id,iprofile_account_id);
         contentValues.put(profile_name,iprofile_name);
         contentValues.put(profile_sex,iprofile_sex);
@@ -438,9 +527,10 @@ public boolean insertDataforShare (String ievent_share_id, String ievent_account
     }
 
   //insert data into follow table
-    public boolean insertDataforFollow(String ifollow_account_id,String ifollower_account_id,String ifollowing_account_id){
+    public boolean insertDataforFollow(String ifollow_id,String ifollow_account_id,String ifollower_account_id,String ifollowing_account_id){
         SQLiteDatabase db= this.getWritableDatabase();
         ContentValues contentValues= new ContentValues();
+        contentValues.put(follow_id,ifollow_id);
         contentValues.put(follow_account_id,ifollow_account_id);
         contentValues.put(follower_account_id,ifollower_account_id);
         contentValues.put(following_account_id,ifollowing_account_id);
