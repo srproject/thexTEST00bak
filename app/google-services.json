@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "409719625117",
+    "firebase_url": "https://thex-c1140.firebaseio.com",
+    "project_id": "thex-c1140",
+    "storage_bucket": "thex-c1140.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409719625117:android:e11da4420e4687dd",
+        "android_client_info": {
+          "package_name": "com.sr.thextest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409719625117-9vsk59m4vot0o6nracffec7d76lnn3u2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sr.thextest",
+            "certificate_hash": "dc27520c2ae65cac0c89bb30d10f5fe95a768790"
+          }
+        },
+        {
+          "client_id": "409719625117-fqtvg6gvn1vnd45t7md9o9q257use85k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgBHQQMa3-hjkrLygCK-u8R8Ybu387NYc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409719625117-fqtvg6gvn1vnd45t7md9o9q257use85k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
