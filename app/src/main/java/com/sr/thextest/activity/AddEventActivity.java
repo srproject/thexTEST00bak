@@ -86,10 +86,14 @@ public class AddEventActivity extends AppCompatActivity implements LocationListe
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
         //for control database
         myDB= new SQLiteDatabaseHelper(this);
         map= new MapHomeFragment();
 
+
+        myDB.copyDatabase(getApplicationContext(),"ThexData.db");
 
 
         ActionBar actionBar = getSupportActionBar();
@@ -247,7 +251,7 @@ public class AddEventActivity extends AppCompatActivity implements LocationListe
                 }
                 else {
 
-
+/*
                     boolean inserted =myDB.insertDataforevent("bomb"
                             ,timematab.getText().toString()
                             ,datematab.getText().toString()
@@ -257,6 +261,7 @@ public class AddEventActivity extends AppCompatActivity implements LocationListe
                             ,detailsmatab.getText().toString()
                             ,""
                              );
+
                     if( inserted == true){
 
 
@@ -272,7 +277,7 @@ public class AddEventActivity extends AppCompatActivity implements LocationListe
                     else{
                         Toast.makeText(getApplicationContext()," مش تسلم event",Toast.LENGTH_SHORT).show();
                     }
-
+*/
 
 
 

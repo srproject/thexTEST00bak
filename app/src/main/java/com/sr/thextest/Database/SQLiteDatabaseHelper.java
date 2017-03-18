@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.sr.thextest.R;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -18,7 +20,8 @@ import java.io.OutputStream;
  */
 
 public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
-    public static  final String DATABASE_NAME="data.db";
+
+    public static  final String DATABASE_NAME="ThexData.db";
 
     //EVENT Table
 
