@@ -65,7 +65,7 @@ public class HomeEventListViewActivity extends AppCompatActivity {
         new CountDownTimer(1000, 800) {
 
             public void onTick(long millisUntilFinished) {
-                findViewById(R.id.loadingPanelev).setVisibility(View.VISIBLE);
+                findViewById(R.id.loadingev).setVisibility(View.VISIBLE);
             }
 
             public void onFinish() {
@@ -73,7 +73,7 @@ public class HomeEventListViewActivity extends AppCompatActivity {
 
                 SQLITEDATABASE = SQLITEHELPER.getWritableDatabase();
 
-                cursor = SQLITEDATABASE.rawQuery("SELECT * FROM event", null);
+                cursor = SQLITEDATABASE.rawQuery("SELECT * FROM event ORDER BY event_date  DESC  ", null);
 
 
                 event_type_ArrayList.clear();
@@ -100,11 +100,11 @@ public class HomeEventListViewActivity extends AppCompatActivity {
                         event_des_ArrayList
 
                 );
+                findViewById(R.id.loadingev).setVisibility(View.GONE);
 
                 LISTVIEW.setAdapter(ListAdapter);
 
                 cursor.close();
-                findViewById(R.id.loadingPanelev).setVisibility(View.GONE);
 
             }
         }.start();

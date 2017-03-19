@@ -21,7 +21,7 @@ import java.io.OutputStream;
 
 public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 
-    public static  final String DATABASE_NAME="TheXData.db";
+    public static  final String DATABASE_NAME="TheXXData.db";
 
     //EVENT Table
 
@@ -364,7 +364,6 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 
 
         db.execSQL("create table IF NOT EXISTS follow (follow_id VARCHAR PRIMARY KEY, follow_account_id VARCHAR " +
-                ",profile_name VARCHAR ,profile_sex VARCHAR" +
                 ",follower_account_id VARCHAR ,following_account_id VARCHAR)" +
                 " ;  " );
 

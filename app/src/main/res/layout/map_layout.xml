@@ -22,6 +22,18 @@
         tools:context="com.sr.projectx.MapActivity">
 
 
+
+        <ProgressBar
+            android:id="@+id/loadingmp"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:visibility="gone"
+            />
+
+
+
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fabsetmap"
             android:layout_width="65dp"

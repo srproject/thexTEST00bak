@@ -177,7 +177,7 @@ public class AddEventActivity extends AppCompatActivity implements LocationListe
 
 
 
-                DateFormat df = new SimpleDateFormat("EEE, dd/MM/yyyy");
+                DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
                 String date = df.format(Calendar.getInstance().getTime());
                 datematab.setText(date);
 

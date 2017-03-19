@@ -197,13 +197,20 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
 
 
 
-        new CountDownTimer(1850, 100) {
+        new CountDownTimer(7000, 100) {
 
             public void onTick(long millisUntilFinished) {
-Log.i("SR","Start");
+
+
+                findViewById(R.id.loadingmp).setVisibility(View.VISIBLE);
+
+
+                Log.i("SR","Start");
             }
 
             public void onFinish() {
+                findViewById(R.id.loadingmp).setVisibility(View.GONE);
+
                 CaptureMapScreen();
 
 

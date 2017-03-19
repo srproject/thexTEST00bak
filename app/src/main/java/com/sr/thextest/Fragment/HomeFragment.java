@@ -242,7 +242,7 @@ public class HomeFragment extends Fragment implements KeyListener {
 
                 SQLITEDATABASE = SQLITEHELPER.getWritableDatabase();
 
-                cursor = SQLITEDATABASE.rawQuery("SELECT * FROM event", null);
+                cursor = SQLITEDATABASE.rawQuery("SELECT * FROM event ORDER BY event_date  DESC ", null);
 
 
                 event_type_ArrayList.clear();
