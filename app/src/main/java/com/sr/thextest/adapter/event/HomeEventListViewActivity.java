@@ -2,6 +2,8 @@ package com.sr.thextest.adapter.event;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -25,6 +27,8 @@ public class HomeEventListViewActivity extends AppCompatActivity {
 
     ArrayList<String> event_type_ArrayList = new ArrayList<String>();
     ArrayList<String> event_des_ArrayList = new ArrayList<String>();
+    byte[]  event_snap ;
+
     ListView LISTVIEW;
     Button buuplist;
 
@@ -75,6 +79,7 @@ public class HomeEventListViewActivity extends AppCompatActivity {
                 event_type_ArrayList.clear();
                 event_des_ArrayList.clear();
 
+
                 if (cursor.moveToFirst()) {
                     do {
 
@@ -84,7 +89,7 @@ public class HomeEventListViewActivity extends AppCompatActivity {
                         event_type_ArrayList.add(cursor.getString(cursor.getColumnIndex(SQLiteDatabaseHelper.event_type)));
 
                         event_des_ArrayList.add(cursor.getString(cursor.getColumnIndex(SQLiteDatabaseHelper.event_det)));
-
+                        event_snap=cursor.getBlob(cursor.getColumnIndex(SQLiteDatabaseHelper.event_map_snap));
 
                     } while (cursor.moveToNext());
                 }
@@ -103,7 +108,6 @@ public class HomeEventListViewActivity extends AppCompatActivity {
 
             }
         }.start();
-
 
 
 

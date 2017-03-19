@@ -42,6 +42,7 @@ import com.sr.thextest.Fragment.MapHomeFragment;
 import com.sr.thextest.R;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -51,13 +52,14 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Random;
 
 public class AddEventActivity extends AppCompatActivity implements LocationListener, Application.ActivityLifecycleCallbacks {
 
 
      FloatingActionButton fabloc,fabsend;
      int dc2;
-     Bitmap bitmap;
+     Bitmap Pbitmap,mapbitmap;
      EditText datematab,timematab,loc,locname,detailsmatab;
      TextView detailscu;
      ImageView imageaddmatab;
@@ -86,14 +88,14 @@ public class AddEventActivity extends AppCompatActivity implements LocationListe
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//SR
+
 
         //for control database
         myDB= new SQLiteDatabaseHelper(this);
         map= new MapHomeFragment();
 
 
-        myDB.copyDatabase(getApplicationContext(),"ThexData.db");
+        myDB.copyDatabase(getApplicationContext(),"TheXData.db");
 
 
         ActionBar actionBar = getSupportActionBar();
@@ -251,15 +253,18 @@ public class AddEventActivity extends AppCompatActivity implements LocationListe
                 }
                 else {
 
-/*
-                    boolean inserted =myDB.insertDataforevent("bomb"
+
+                     boolean inserted =myDB.insertDataforevent(getidevent()
+                             ,"ac5454"
+                             ,"bump"
                             ,timematab.getText().toString()
                             ,datematab.getText().toString()
                             ,text1.toString()
                             ,text2.toString()
                             ,text3.toString()
                             ,detailsmatab.getText().toString()
-                            ,""
+                            ,getBitmapAsByteArray(mapbitmap)
+                             ,getBitmapAsByteArray(mapbitmap)
                              );
 
                     if( inserted == true){
@@ -277,7 +282,6 @@ public class AddEventActivity extends AppCompatActivity implements LocationListe
                     else{
                         Toast.makeText(getApplicationContext()," مش تسلم event",Toast.LENGTH_SHORT).show();
                     }
-*/
 
 
 
@@ -336,9 +340,9 @@ public class AddEventActivity extends AppCompatActivity implements LocationListe
             File f = new File(Environment.getExternalStorageDirectory() + File.separator + "/" + appname + "/Image/location_add.png");
             if(f.exists()) {
 
-                Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+                  mapbitmap = BitmapFactory.decodeStream(new FileInputStream(f));
 
-                samplemap.setImageBitmap(b);
+                samplemap.setImageBitmap(mapbitmap);
             }
             else {
                 //Intent locIntent = new Intent(getApplication(),MapActivity.class);
@@ -411,8 +415,8 @@ public class AddEventActivity extends AppCompatActivity implements LocationListe
 
         if( requestCode == CAMERA_PIC_REQUEST && resultCode == RESULT_OK && data != null)
         {
-            bitmap = (Bitmap) data.getExtras().get("data");
-            imageaddmatab.setImageBitmap(bitmap);
+            Pbitmap = (Bitmap) data.getExtras().get("data");
+            imageaddmatab.setImageBitmap(Pbitmap);
 
         }
         else
@@ -614,6 +618,34 @@ public class AddEventActivity extends AppCompatActivity implements LocationListe
 
 
 
+
+
+    }
+
+
+    public static byte[] getBitmapAsByteArray(Bitmap bitmap) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 0, outputStream);
+        return outputStream.toByteArray();
+    }
+
+    private String  getidevent(){
+
+        Random r = new Random();
+        int randomNo = r.nextInt(1000+1);
+
+        Calendar c = Calendar.getInstance();
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        int mon = c.get(Calendar.MONTH)+1;
+        int year = c.get(Calendar.YEAR);
+        int hour= c.get(Calendar.HOUR_OF_DAY);
+        int Min= c.get(Calendar.MINUTE);
+        int sec= c.get(Calendar.SECOND);
+
+
+        String strI = "ev" + randomNo+day+mon+year+hour+Min+sec;
+
+        return strI;
 
 
     }

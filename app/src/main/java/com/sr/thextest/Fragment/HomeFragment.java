@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.sr.thextest.Database.SQLiteDatabaseHelper;
 import com.sr.thextest.R;
+import com.sr.thextest.adapter.event.HomeEventListViewActivity;
 import com.sr.thextest.adapter.event.HomeEventSQLiteListAdapter;
 
 import java.io.File;
@@ -45,6 +46,8 @@ public class HomeFragment extends Fragment implements KeyListener {
 
     ArrayList<String> event_type_ArrayList = new ArrayList<String>();
     ArrayList<String> event_des_ArrayList = new ArrayList<String>();
+    byte[]  event_snap ;
+
     ListView LISTVIEW;
 
 
@@ -232,8 +235,7 @@ public class HomeFragment extends Fragment implements KeyListener {
         new CountDownTimer(1000, 800) {
 
             public void onTick(long millisUntilFinished) {
-                //findViewById(R.id.loadingPanelev).setVisibility(View.VISIBLE);
-            }
+             }
 
             public void onFinish() {
 
@@ -246,6 +248,7 @@ public class HomeFragment extends Fragment implements KeyListener {
                 event_type_ArrayList.clear();
                 event_des_ArrayList.clear();
 
+
                 if (cursor.moveToFirst()) {
                     do {
 
@@ -255,7 +258,6 @@ public class HomeFragment extends Fragment implements KeyListener {
                         event_type_ArrayList.add(cursor.getString(cursor.getColumnIndex(SQLiteDatabaseHelper.event_type)));
 
                         event_des_ArrayList.add(cursor.getString(cursor.getColumnIndex(SQLiteDatabaseHelper.event_det)));
-
 
                     } while (cursor.moveToNext());
                 }
@@ -273,7 +275,6 @@ public class HomeFragment extends Fragment implements KeyListener {
 
             }
         }.start();
-
 
 
 

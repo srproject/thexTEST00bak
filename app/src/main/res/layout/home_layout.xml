@@ -206,7 +206,7 @@
                     android:text="@string/number_like" />
 
                 <ImageView
-                    android:id="@+id/imageView1"
+                    android:id="@+id/imageViewsnap"
                     android:layout_width="match_parent"
                     android:layout_height="218dp"
 

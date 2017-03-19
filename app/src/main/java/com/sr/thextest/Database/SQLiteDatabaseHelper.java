@@ -21,7 +21,7 @@ import java.io.OutputStream;
 
 public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 
-    public static  final String DATABASE_NAME="ThexData.db";
+    public static  final String DATABASE_NAME="TheXData.db";
 
     //EVENT Table
 
@@ -168,8 +168,9 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 
         //EVENT Table
 
+
          db.execSQL("create table event (event_id VARCHAR PRIMARY KEY, event_account_id VARCHAR " +
-                 ",event_type VARCHAR ,event_date VARCHAR" +
+                 ",event_type VARCHAR ,event_time VARCHAR ,event_date VARCHAR" +
                  ",event_latitude VARCHAR ,event_longitude VARCHAR" +
                  ",event_locnam VARCHAR ,event_det VARCHAR" +
                  ",event_photo BLOB ,event_map_snap BLOB  )" +
@@ -275,12 +276,11 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
         //EVENT Table
 
         db.execSQL("create table IF NOT EXISTS event (event_id VARCHAR PRIMARY KEY, event_account_id VARCHAR " +
-                ",event_type VARCHAR ,event_date VARCHAR" +
+                ",event_type VARCHAR ,event_time VARCHAR ,event_date VARCHAR" +
                 ",event_latitude VARCHAR ,event_longitude VARCHAR" +
                 ",event_locnam VARCHAR ,event_det VARCHAR" +
                 ",event_photo BLOB ,event_map_snap BLOB  )" +
                 " ;  " );
-
 
         //event_area Table
 
@@ -376,7 +376,7 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 // insert data into table event
 
     public boolean insertDataforevent (String ievent_id,String ievent_account_id,String ievent_type,String ievent_time,String ievent_date
-            ,String ievent_latitude,String ievent_longitude,String ievent_locnam,String ievent_det,String ievent_photo ,String ievent_map_snap) {
+            ,String ievent_latitude,String ievent_longitude,String ievent_locnam,String ievent_det,byte[] ievent_photo ,byte[] ievent_map_snap) {
 
 
 
